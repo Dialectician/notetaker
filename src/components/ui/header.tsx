@@ -38,6 +38,7 @@ export function Header({ session }: HeaderProps) {
         </Link>
         <button className="ml-4">
           <Sun className="h-6 w-6" />
+          <Moon className="h-6 w-6" />
         </button>
       </nav>
     </header>
