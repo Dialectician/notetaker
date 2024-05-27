@@ -1,10 +1,9 @@
-"use client";
-
 import Link from "next/link";
 import { Sun, Moon } from "lucide-react";
+import Image from "next/image"; // Import Image from next/image
 
 interface HeaderProps {
-  session: any;
+  session: { [key: string]: any }; // Update the session type
 }
 
 export function Header({ session }: HeaderProps) {
@@ -12,10 +11,13 @@ export function Header({ session }: HeaderProps) {
     <header className="flex items-center justify-between bg-[#15162c] p-4 text-white shadow-lg">
       <div className="text-xl font-bold">
         <Link href="/">
-          <img
+          {/* Replace img tag with Image component */}
+          <Image
             src="/logo.png"
             alt="Track162 Logo"
-            className="mr-2 inline-block h-8"
+            width={32}
+            height={32}
+            className="mr-2 inline-block"
           />
           Track162
         </Link>
