@@ -1,3 +1,4 @@
+//app/layout.tsx
 import "~/styles/globals.css";
 
 import { GeistSans } from "geist/font/sans";
