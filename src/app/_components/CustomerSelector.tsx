@@ -25,7 +25,7 @@ const CustomerSelector: React.FC<CustomerSelectorProps> = ({
   useEffect(() => {
     if (customers) {
       setCustomerInfo(
-        customers.find((customer: Customer) => customer.id === customerId) ||
+        customers.find((customer: Customer) => customer.id === customerId) ??
           null,
       );
     }
@@ -37,7 +37,7 @@ const CustomerSelector: React.FC<CustomerSelectorProps> = ({
     const selectedCustomer = customers?.find(
       (customer: Customer) => customer.id === selectedCustomerId,
     );
-    setCustomerInfo(selectedCustomer || null);
+    setCustomerInfo(selectedCustomer ?? null);
   };
 
   if (isLoading) {

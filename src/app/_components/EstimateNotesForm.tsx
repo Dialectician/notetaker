@@ -26,7 +26,7 @@ const EstimateNotesForm: React.FC<EstimateNotesFormProps> = ({
   taxRate,
   setTaxRate,
   totalCost,
-  attachedFiles,
+  //attachedFiles,
   setAttachedFiles,
 }) => {
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
