@@ -1,9 +1,7 @@
-//app/layout.tsx
 import "~/styles/globals.css";
-
 import { GeistSans } from "geist/font/sans";
-
 import { TRPCReactProvider } from "~/trpc/react";
+import SessionWrapper from "./SessionWrapper"; // Import the SessionWrapper
 
 export const metadata = {
   title: "Create T3 App",
@@ -19,7 +17,11 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <SessionWrapper>
+          {" "}
+          {/* Wrap children with SessionWrapper */}
+          <TRPCReactProvider>{children}</TRPCReactProvider>
+        </SessionWrapper>
       </body>
     </html>
   );
