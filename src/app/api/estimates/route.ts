@@ -36,7 +36,16 @@ export const POST = async (req: Request) => {
     const result = await caller.create(parsedInput);
     return NextResponse.json(result);
   } catch (error) {
-    return NextResponse.json({ error: error.message }, { status: 400 });
+    // Handle the error correctly
+    let errorMessage = "An error occurred";
+
+    if (error instanceof Error) {
+      errorMessage = error.message;
+    } else if (typeof error === "string") {
+      errorMessage = error;
+    }
+
+    return NextResponse.json({ error: errorMessage }, { status: 400 });
   }
 };
 
