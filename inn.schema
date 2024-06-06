@@ -1,0 +1,873 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum ResultTypestring {
+  Success
+  Failure
+  ForbiddenError
+  AuthenticationError
+  InvalidLoginWarning
+  CaptchaWarning
+  TwoFactorRequired
+}
+
+enum PurchaseOrderStatusstring {
+  Draft
+  Submitted
+  Approved
+  Rejected
+  Received
+  PartiallyReceived
+  Closed
+  Cancelled
+  Returned
+  Pending
+  Issued
+  InReview
+}
+
+enum WorkOrderStatusstring {
+  Open
+  Closed
+}
+
+enum InvoiceStatusstring {
+  Open
+  Pending
+  Closed
+  Approved
+  Rejected
+  Draft
+}
+
+enum SheetTypestring {
+  Drawing
+  Design
+}
+
+enum FileTypestring {
+  Image
+  Pdf
+  Svg
+  Dxf
+}
+
+enum ShapeGeometryinteger {
+  Rectangle
+  Circle
+  Ellipse
+  Triangle
+  Line
+  Polygon
+  Arc
+  NotDefined
+}
+
+enum DimensionsCountinteger {
+  ZeroDimension
+  OneDimension
+  TwoDimension
+  ThreeDimension
+}
+
+enum EngineeringSyncProductProcessingTypeinteger {
+  Nested
+  NonNested
+}
+
+enum UserStatusinteger {
+  Active
+  Inactive
+}
+
+enum PermissionNamestring {
+  Administrator
+  ManageCompany
+  ManageEmployee
+  ManageOffice
+  ManageOpportunity
+  ManageProject
+  ManageWorkOrder
+  ManageInventory
+  ManagePurchaseOrder
+  ManageRfi
+  ManageProposal
+  ManageSettings
+  ManageGlobalVariables
+  ManageBid
+  ManageSheet
+  ManageMaterialToBuy
+  ManageCostTransactions
+  ManageLaborKanban
+  ManageTax
+  ManageDateManagement
+  ManageAddedExpense
+  ManageChangeOrder
+  ManageUserSettings
+  ManageUser
+  ManageTenant
+  ManageFacility
+  ManageWarehouse
+  ManageLabelPrinter
+  ManageTenantSocial
+  ManageTimeTracking
+  ManageVersion
+  ManageWorkInProgress
+  ManageReceivedMaterialLabel
+  ManageActivityLog
+  ManageUserImage
+  ManageUserContext
+  ManageEmergencyContact
+  ManageCompensation
+  ManageNote
+  ManageEmployeesAdvanced
+  ManageEngineeringBomItem
+  ManagePoint
+  ManagePosition
+  ManageShape
+  ManageEngineeringPartApi
+  ManageEngineeringSubassemblyApi
+  ManageEngineeringNonNestedPartApi
+  ManageEngineeringRegressionTypeApi
+  ManageEngineeringShipmentItem
+  ManageEngineeringNestSheet
+  ManageImportEngineeringLinkData
+  ManageInventoryByBinLineItem
+  ManageInventoryByUom
+  ManageInventoryByBin
+  ManageMaterialInBin
+  ManageInventoryByMaterial
+  ManageInventoryByReceipt
+  ManageMasterInventory
+  ManageNumberNamePair
+  ManageApiCustomField
+  ManageInvoiceItem
+  ManageInvoiceItemProject
+  ManageInvoiceDrawLineItem
+  ManageInvoiceDraw
+  ManageInvoiceLine
+  ManageInvoiceLineItemProject
+  ManageBurden
+  ManageLibraryLaborItem
+  ManageLaborKanbanItem
+  ManageManufacturer
+  ManageWeight
+  ManageVendor
+  ManageMaterials
+  ManageMaterial
+  ManageMaterialToBuyDetail
+  ManageMaterialToBuy
+  ManageOperationDurationProductivityEntry
+  ManageOperationDuration
+  ManageOperation
+  ManageOpportunityConvertedToProject
+  ManageBidSimple
+  ManageOpportunity
+  ManageOverheadListItem
+  ManageProjectConvertedFromOpportunity
+  ManageProject
+  ManageProjectBudgetDistributedCost
+  ManageProjectBudgetMaterial
+  ManageProjectBudgetOperation
+  ManageProjectBudgetOverhead
+  ManageProjectProductWorkOrder
+  ManageProjectBudgetProduct
+  ManageBudgetGroup
+  ManageProjectJobCosting
+  ManageProjectSovCostSummary
+  ManageProjectSovLineItem
+  ManageProjectSov
+  ManageProjectWorkOrderGlobal
+  ManageProjectWorkOrder
+  ManageBudgetGroupsLaborItemsWorkOrder
+  ManageProjectWorkOrderJobCosting
+  ManageProjectWorkOrderNoteReaction
+  ManageProjectWorkOrderNote
+  ManageProposalInformation
+  ManageCustomerInformation
+  ManageJobDetails
+  ManageScopeElement
+  ManageBudgetTotals
+  ManageAlternateTotals
+  ManageScopeOfWork
+  ManageBudgetData
+  ManageProposalMaterial
+  ManageProposalOperation
+  ManageProposalDistributedCost
+  ManageProposalOverhead
+  ManageTaxRate
+  ManageFacilityRate
+  ManageQuestion
+  ManageQuestionnaireData
+  ManageTax
+  ManageContactInformation
+  ManageProposal
+  ManageGlobalVariable
+  ManageVariable
+  ManageProposalProductVariables
+  ManageProposalGlobalGroupInstance
+  ManageProposalGlobalGroup
+  ManageBidIdentifier
+  ManageContactIdentifier
+  ManageProposalList
+  ManagePurchaseOrderLineItem
+  ManagePurchaseOrderReceipt
+  ManagePurchaseOrder
+  ManageReceivedMaterialLabel
+  ManageRfiReasonRequestType
+  ManageRfiType
+  ManageRfiCostImpactType
+  ManageRfiScheduleImpactType
+  ManageRfiStatusType
+  ManageRfiContactDetails
+  ManageRfiOfficeDetails
+  ManageRfiCompanyDetails
+  ManageRfiLocationDetails
+  ManageRfiSheetDetails
+  ManageRfiShopDrawingSheetDetails
+  ManageRfiRelatedDetails
+  ManageRfiAnswerDetails
+  ManageRfiDetails
+  ManageSheetsApi
+  ManageTakeoffSheet
+  ManageSize
+  ManageTakeoffSheetDetails
+  ManageTaxRegulationsType
+  ManageProductOnSheetImportMaterial
+  ManageProductOnSheetImportOperation
+  ManageCashItemType
+  ManageProductOnSheetImportCashItem
+  ManageProductProcessingType
+  ManageDimensions
+  ManageProductOnSheetImportLocation
+  ManageProductOnSheetImport
+  ManageProductsOnSheetImport
+  ManageTenantSocial
+  ManageWarehouse
+  ManageLabelPrinter
+  ManageFacilityDetails
+  ManageTenant
+  ManageTimeTracking
+  ManageActivityLogCreateApi
+  ManageVersion
+  ManageWorkInProgress
+}
+
+model MonetaryValueModel {
+  Value           Float?   @db.Double
+  OriginalValue   Float?   @db.Double @map("Original_Value") @default(null)
+  CurrencyCode     String?
+  @@map("MonetaryValue")
+}
+
+model CompanyIdentifierModel {
+  Id   String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  Name String?  @map("Name")
+  @@map("CompanyIdentifier")
+}
+
+model OfficeIdentifierModel {
+  Id   String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  Name String?  @map("Name")
+  @@map("OfficeIdentifier")
+}
+
+model AddedExpenseWorkOrderModel {
+  Id                       String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  Name                      String?  @map("Name")
+  Number                    String?  @map("Number")
+  Type                      String?  @map("Type")
+  GrandTotalPrice          MonetaryValueModel?
+  PercentageOfTotalExpense Float?   @map("Percentage_Of_Total_Expense")
+  Expense                   MonetaryValueModel?
+  @@map("AddedExpenseWorkOrder")
+}
+
+model UserIdentifierModel {
+  Id        String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  FullName String?  @map("FullName")
+  @@map("UserIdentifier")
+}
+
+model AddedExpenseModel {
+  Status              String?  @map("Status")
+  DateOfOccurrence    String?  @db.Date @map("Date_Of_Occurrence") @default(null)
+  Expense             MonetaryValueModel?
+  Company             CompanyIdentifierModel?
+  PayTo               OfficeIdentifierModel?
+  SKU                 String?  @map("SKU")
+  ProjectNumber        String?  @map("Project_Number")
+  ProjectName         String?  @map("Project_Name")
+  BudgetGroup         String?  @map("Budget_Group")
+  WorkOrders          AddedExpenseWorkOrderModel[]
+  CreatedDate        String   @db.DateTime @map("Created_Date") @default(now())
+  CreatedBy           UserIdentifierModel?
+  Notes               String?  @map("Notes")
+  DebitGLAccount      String?  @map("Debit_GL_Account")
+  VendorInvoiceNumber String?  @map("Vendor_Invoice_Number")
+  InvoiceDate        String?  @db.Date @map("Invoice_Date") @default(null)
+  ExternalIdentifier String?  @map("External_Identifier")
+  PaymentDueDate      String?  @db.Date @map("Payment_Due_Date") @default(null)
+  PaymentTerm        String?  @map("Payment_Term")
+  ProjectCustomerOffice OfficeIdentifierModel?
+  ProjectCustomer     CompanyIdentifierModel?
+  @@map("AddedExpense")
+}
+
+model AddedExpenseModelResultModel {
+  Items AddedExpenseModel[]
+  @@map("AddedExpenseModelResult")
+}
+
+model MarginModel {
+  Cash     MonetaryValueModel?
+  Percentage Float?
+  @@map("Margin")
+}
+
+model ChangeOrderListModel {
+  Id                          String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  Name                        String?  @map("Name")
+  ProjectName                  String?  @map("Project_Name")
+  ProjectNo                    String?  @map("Project_No")
+  WorkflowStepName             String?  @map("Workflow_Step_Name")
+  WorkflowStepIndex            Int     @db.Int32 @map("Workflow_Step_Index")
+  CustomerChangeOrderNumber    String?  @map("Customer_Change_Order_Number")
+  GrandTotalCost              MonetaryValueModel?
+  GrandTotalMargin            MarginModel?
+  GrandTotalPrice             MonetaryValueModel?
+  NetDraftingChangeFromBaseBid MonetaryValueModel?
+  NetFabricationChangeFromBaseBid MonetaryValueModel?
+  NetProductChangeFromBaseBid     MonetaryValueModel?
+  NetInstallChangeFromBaseBid     MonetaryValueModel?
+  NetTotalChangeFromBaseBid      MonetaryValueModel?
+  Description                  String?  @map("Description")
+  InternalNotes                String?  @map("Internal_Notes")
+  InternalStatus               String?  @map("Internal_Status")
+  ChangeOrderStatus            String?  @map("Change_Order_Status")
+  NextMilestone                String?  @map("Next_Milestone")
+  @@map("ChangeOrderList")
+}
+
+model ChangeOrderListModelResultModel {
+  Items ChangeOrderListModel[]
+  @@map("ChangeOrderListModelResult")
+}
+
+model PeopleIdentifierModel {
+  Id       String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  FullName String?  @map("FullName")
+  @@map("PeopleIdentifier")
+}
+
+model AddressModel {
+  Address1 String?  @map("Address1")
+  Address2 String?  @map("Address2")
+  City     String?  @map("City")
+  State    String?  @map("State")
+  ZipCode  String?  @map("ZipCode")
+  Country  String?  @map("Country")
+  County   String?  @map("County")
+  @@map("Address")
+}
+
+model OfficeModel {
+  Id              String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  Name            String?  @map("Name")
+  Description     String?  @map("Description")
+  Grade           String?  @map("Grade")
+  Email           String?  @map("Email")
+  Phone           String?  @map("Phone")
+  TollFree        String?  @map("Toll_Free")
+  Fax             String?  @map("Fax")
+  PhysicalAddress AddressModel?
+  MailingAddress   AddressModel?
+  @@map("Office")
+}
+
+model CompanyModel {
+  Id                String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  Name              String?  @map("Name")
+  ExternalIdentifier String?  @map("External_Identifier")
+  Type              String[] @map("Type")
+  WorkType          String[] @map("WorkType")
+  GeographicScope   String?  @map("Geographic_Scope")
+  AnnualRevenue     MonetaryValueModel?
+  AverageProjectSize MonetaryValueModel?
+  Phone             String?  @map("Phone")
+  Email             String?  @map("Email")
+  Website           String?  @map("Website")
+  DunsNo            String?  @map("Duns_No")
+  FscCocNumber      String?  @map("Fsc_Coc_Number")
+  FscUrl            String?  @map("Fsc_Url")
+  CreatedBy         PeopleIdentifierModel?
+  CreatedDate       String   @db.DateTime @map("Created_Date") @default(now())
+  ModifiedBy        PeopleIdentifierModel?
+  ModifiedDate      String   @db.DateTime @map("Modified_Date") @default(now())
+  Offices           OfficeModel[]
+  @@map("Company")
+}
+
+model CompanyModelResultModel {
+  Items CompanyModel[]
+  @@map("CompanyModelResult")
+}
+
+model ProjectIdentifierModel {
+  Id           String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  ProjectName String?  @map("Project_Name")
+  ProjectNumber String?  @map("Project_Number")
+  @@map("ProjectIdentifier")
+}
+
+model ProjectWorkOrderIdentifierModel {
+  Id   String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  Name String?  @map("Name")
+  Number String?  @map("Number")
+  @@map("ProjectWorkOrderIdentifier")
+}
+
+model CostTransactionHistoryModel {
+  Id                        String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  CostType                    String?  @map("Cost_Type")
+  Type                       String?  @map("Type")
+  Description                 String?  @map("Description")
+  Sku                        String?  @map("Sku")
+  MaterialExternalId           String?  @map("Material_External_Id")
+  EventDate                   String   @db.DateTime @map("Event_Date")
+  PostDate                    String   @db.Date @map("Post_Date")
+  UoM                        String?  @map("UoM")
+  Quantity                    Float?   @db.Double @map("Quantity")
+  TotalCost                   MonetaryValueModel?
+  Employee                    PeopleIdentifierModel?
+  Project                     ProjectIdentifierModel?
+  WorkOrder                   ProjectWorkOrderIdentifierModel?
+  WorkOrderStatus             String?  @map("Work_Order_Status")
+  WorkOrderType               String?  @map("Work_Order_Type")
+  JobCostingStatus            String?  @map("Job_Costing_Status")
+  Vendor                     CompanyIdentifierModel?
+  VendorInvoiceNumber          String?  @map("Vendor_Invoice_Number")
+  BudgetGroupName             String?  @map("Budget_Group_Name")
+  DebitGlAccount              String?  @map("Debit_Gl_Account")
+  CreditGlAccount             String?  @map("Credit_Gl_Account")
+  ExpeditingGlAccount         String?  @map("Expediting_Gl_Account")
+  ShippingGlAccount           String?  @map("Shipping_Gl_Account")
+  HandlingGlAccount           String?  @map("Handling_Gl_Account")
+  CartonGlAccount             String?  @map("Carton_Gl_Account")
+  OtherFreightGlAccount       String?  @map("Other_Freight_Gl_Account")
+  PurchaseOrderNumber         String?  @map("Purchase_Order_Number")
+  BinName                     String?  @map("Bin_Name")
+  WarehouseName               String?  @map("Warehouse_Name")
+  FacilityName                String?  @map("Facility_Name")
+  EmployeeFacilityName         String?  @map("Employee_Facility_Name")
+  @@map("CostTransactionHistory")
+}
+
+model CostTransactionHistoryModelResultModel {
+  Items CostTransactionHistoryModel[]
+  @@map("CostTransactionHistoryModelResult")
+}
+
+model DateManagementStepModel {
+  Name          String?  @map("Name")
+  MilestoneName String?  @map("Milestone_Name")
+  StepIndex     Int     @db.Int32 @map("Step_Index")
+  StepType     String?  @map("Step_Type")
+  TargetDate    String?  @db.Date @map("Target_Date") @default(null)
+  ActualDate    String?  @db.Date @map("Actual_Date") @default(null)
+  @@map("DateManagementStep")
+}
+
+model LaborItemModel {
+  Name         String?  @map("Name")
+  JobCosting   String?  @map("Job_Costing")
+  EstimatedCost MonetaryValueModel?
+  EstimatedHours String?  @db.TimeSpan @map("Estimated_Hours") @default(null)
+  PendingCost   MonetaryValueModel?
+  PendingHours  String?  @db.TimeSpan @map("Pending_Hours") @default(null)
+  PlannedCost   MonetaryValueModel?
+  PlannedHours  String?  @db.TimeSpan @map("Planned_Hours") @default(null)
+  ActualCost    MonetaryValueModel?
+  ActualHours   String?  @db.TimeSpan @map("Actual_Hours") @default(null)
+  @@map("LaborItem")
+}
+
+model DateManagementWorkOrderModel {
+  Number         String?  @map("Number")
+  Name           String?  @map("Name")
+  Id             String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  Type           String?  @map("Type")
+  Status         String?  @map("Status")
+  PlannedStartDate String?  @db.Date @map("Planned_Start_Date") @default(null)
+  ActualStartDate String?  @db.Date @map("Actual_Start_Date") @default(null)
+  MaterialNeededDate String?  @db.Date @map("Material_Needed_Date") @default(null)
+  PlannedEndDate  String?  @db.Date @map("Planned_End_Date") @default(null)
+  PlannedEndMonth String?  @map("Planned_End_Month")
+  ActualEndDate  String?  @db.Date @map("Actual_End_Date") @default(null)
+  ActualEndMonth String?  @map("Actual_End_Month")
+  InvoiceStatus  String?  @map("Invoice_Status")
+  Steps          DateManagementStepModel[]
+  LaborItems      LaborItemModel[]
+  @@map("DateManagementWorkOrder")
+}
+
+model DateManagementProjectModel {
+  ProjectNumber String?  @map("Project_Number")
+  ProjectName   String?  @map("Project_Name")
+  ProjectId     String   @db.Uuid @id @map("Project_Id") @default(auto()) @map("Project_ID") @default(auto())
+  WorkOrders     DateManagementWorkOrderModel[]
+  @@map("DateManagementProject")
+}
+
+model EmployeeModel {
+  Id               String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  LoginEmail        String?  @map("Login_Email")
+  FirstName         String?  @map("First_Name")
+  LastName          String?  @map("Last_Name")
+  Roles            String[] @map("Roles")
+  CreatedDate      String   @db.DateTime @map("Created_Date") @default(now())
+  LastLoginDate    String?  @db.DateTime @map("Last_Login_Date") @default(null)
+  Status            String?  @map("Status")
+  CreatedBy         String?  @map("Created_By")
+  OfficePhone       String?  @map("Office_Phone")
+  Department        String?  @map("Department")
+  ShiftSchedule     String?  @map("Shift_Schedule")
+  TimeZone          String?  @map("Time_Zone")
+  EmploymentStatus  String?  @map("Employment_Status")
+  DateOfHire        String?  @db.Date @map("Date_Of_Hire") @default(null)
+  ExternalIdentifier String?  @map("External_Identifier")
+  LastClockInDate   String?  @db.DateTime @map("Last_Clock_In_Date") @default(null)
+  LastClockOutDate  String?  @db.DateTime @map("Last_Clock_Out_Date") @default(null)
+  LastClockInIp    String?  @map("Last_Clock_In_Ip")
+  LastClockOutIp   String?  @map("Last_Clock_Out_Ip")
+  HasPin           Boolean  @map("Has_Pin")
+  @@map("Employee")
+}
+
+model AddressDto {
+  Address1  String?  @map("Address1")
+  Address2  String?  @map("Address2")
+  City      String?  @map("City")
+  State     String?  @map("State")
+  ZipCode   String?  @map("ZipCode")
+  Country   String?  @map("Country")
+  County    String?  @map("County")
+  SearchString String?  @map("SearchString")
+  @@map("AddressDto")
+}
+
+model EmergencyContactDto {
+  FirstName      String?  @map("FirstName")
+  LastName       String?  @map("LastName")
+  Relationship   String?  @map("Relationship")
+  EmailAddress   String?  @map("EmailAddress")
+  HomePhoneNumber String?  @map("HomePhoneNumber")
+  MobilePhoneNumber String?  @map("MobilePhoneNumber")
+  @@map("EmergencyContactDto")
+}
+
+model MonetaryDto {
+  Value       Float?   @db.Double
+  CurrencyCode String?
+  @@map("MonetaryDto")
+}
+
+model CompensationApiDto {
+  EffectiveDate String?  @map("EffectiveDate")
+  Type          String?  @map("Type")
+  Rate          MonetaryDto?
+  EndDate       String?  @map("EndDate")
+  Description   String?  @map("Description")
+  @@map("CompensationApiDto")
+}
+
+model EmployeesImportApiDto {
+  Id               String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  LoginEmail        String?  @map("LoginEmail")
+  FirstName         String?  @map("FirstName")
+  MiddleName        String?  @map("MiddleName")
+  LastName          String?  @map("LastName")
+  Prefix           String?  @map("Prefix")
+  Suffix           String?  @map("Suffix")
+  HomePhone        String?  @map("HomePhone")
+  CellPhone        String?  @map("CellPhone")
+  PhysicalAddress   AddressDto?
+  MailingAddress    AddressDto?
+  OfficePhone       String?  @map("OfficePhone")
+  Department        String?  @map("Department")
+  ShiftSchedule     String?  @map("ShiftSchedule")
+  TimeZone          String?  @map("TimeZone")
+  EmploymentStatus  String?  @map("EmploymentStatus")
+  DateOfHire        String?  @map("DateOfHire")
+  ExternalIdentifier String?  @map("ExternalIdentifier")
+  EmergencyContact EmergencyContactDto?
+  Compensations     CompensationApiDto[]
+  Notes            String[]
+  @@map("EmployeesImportApiDto")
+}
+
+model UserImageModel {
+  Identifier String?  @map("Identifier")
+  Name       String?  @map("Name")
+  @@map("UserImage")
+}
+
+enum UserStatus {
+  Active
+  Inactive
+}
+
+model UserContextModel {
+  UserId        String   @db.Uuid @id @map("UserId") @default(auto()) @map("UserID") @default(auto())
+  LoginEmail     String?  @map("LoginEmail")
+  FirstName      String?  @map("FirstName")
+  LastName       String?  @map("LastName")
+  TenantName    String?  @map("TenantName")
+  Permissions    PermissionNamestring[]
+  TimeZoneInfoId String?  @map("TimeZoneInfoId")
+  IsRoot        Boolean  @map("IsRoot")
+  Image         UserImageModel?
+  Status        UserStatus @default(UserStatus.Active)
+  IsActive       Boolean  @map("IsActive")
+  @@map("UserContext")
+}
+
+model EmergencyContactModel {
+  FirstName       String?  @map("FirstName")
+  LastName        String?  @map("LastName")
+  Relationship    String?  @map("Relationship")
+  EmailAddress    String?  @map("EmailAddress")
+  HomePhoneNumber String?  @map("HomePhoneNumber")
+  MobilePhoneNumber String?  @map("MobilePhoneNumber")
+  @@map("EmergencyContact")
+}
+
+model CompensationModel {
+  EffectiveDate String?  @db.Date @map("Effective_Date") @default(null)
+  Type          String?  @map("Type")
+  Rate          MonetaryValueModel?
+  EndDate       String?  @db.Date @map("End_Date") @default(null)
+  Description   String?  @map("Description")
+  @@map("Compensation")
+}
+
+model NoteModel {
+  Text        String?  @map("Text")
+  CreatedBy    PeopleIdentifierModel?
+  CreatedOnDate String   @db.DateTime @map("Created_On_Date") @default(now())
+  @@map("Note")
+}
+
+model EmployeesAdvancedModel {
+  Id               String   @db.Uuid @id @map("Id") @default(auto()) @map("ID") @default(auto())
+  LoginEmail        String?  @map("Login_Email")
+  FirstName         String?  @map("First_Name")
+  MiddleName        String?  @map("Middle_Name")
+  LastName          String?  @map("Last_Name")
+  Prefix           String?  @map("Prefix")
+  Suffix           String?  @map("Suffix")
+  HomePhone        String?  @map("Home_Phone")
+  CellPhone        String?  @map("Cell_Phone")
+  PhysicalAddress   AddressModel?
+  MaillingAddress    AddressModel?
+  Roles            String[] @map("Roles")
+  CreatedDate      String   @db.DateTime @map("Created_Date") @default(now())
+  LastLoginDate    String?  @db.DateTime @map("Last_Login_Date") @default(null)
+  Status            String?  @map("Status")
+  CreatedBy         String?  @map("Created_By")
+  OfficePhone       String?  @map("Office_Phone")
+  Department        String?  @map("Department")
+  ShiftSchedule     String?  @map("Shift_Schedule")
+  TimeZone          String?  @map("Time_Zone")
+  EmploymentStatus  String?  @map("Employment_Status")
+  DateOfHire        String?  @db.Date @map("Date_Of_Hire") @default(null)
+  ExternalIdentifier String?  @map("External_Identifier")
+  EmergencyContact  EmergencyContactModel?
+  Compensations     CompensationModel[]
+  Notes            NoteModel[]
+  @@map("EmployeesAdvanced")
+}
+
+model EngineeringBomItemModel {
+  Name                 String?  @map("Name")
+  UOM                  String?  @map("UOM")
+  Quantity              Float?   @db.Double @map("Quantity")
+  EngineeringID         String?  @map("EngineeringID")
+  PanelWidth            Float?   @db.Double @map("PanelWidth")
+  PanelLength           Float?   @db.Double @map("PanelLength")
+  PanelThickness        Float?   @db.Double @map("PanelThickness")
+  IsFromNesting        Boolean  @map("IsFromNesting")
+  Type                 Int     @db.Int32
+  EngineeringPartApi   EngineeringPartApiModel? @relation(fields: [EngineeringID], references: [EngineeringPartId])
+  EngineeringNestSheet EngineeringNestSheetModel? @relation(fields: [EngineeringID], references: [NestSheetId])
+  @@map("EngineeringBomItem")
+}
+
+model PointModel {
+  Order Int     @db.Int32
+  X     Float?   @db.Double
+  Y     Float?   @db.Double
+  @@map("Point")
+}
+
+model PositionModel {
+  Points PointModel[]
+  @@map("Position")
+}
+
+enum ShapeGeometry {
+  Rectangle
+  Circle
+  Ellipse
+  Triangle
+  Line
+  Polygon
+  Arc
+  NotDefined
+}
+
+enum DimensionsCount {
+  ZeroDimension
+  OneDimension
+  TwoDimension
+  ThreeDimension
+}
+
+model ShapeModel {
+  Position   PositionModel?
+  Figure     ShapeGeometry
+  Dimensions DimensionsCount
+  @@map("Shape")
+}
+
+model EngineeringPartApiModel {
+  EngineeringPartId      String?  @id @map("EngineeringPartId") @default(auto())
+  ShipmentItemId        String?  @map("ShipmentItemId")
+  Name                  String?  @map("Name")
+  Width                 Float?   @db.Double @map("Width")
+  Length                Float?   @db.Double @map("Length")
+  Thickness             Float?   @db.Double @map("Thickness")
+  EngineeringMaterialId String?  @map("EngineeringMaterialId")
+  EngineeringMaterialName String?  @map("EngineeringMaterialName")
+  NestSheetId           String?  @map("NestSheetId")
+  Description           String?  @map("Description")
+  RotationAngleOnSheet  Float?   @db.Double @map("RotationAngleOnSheet")
+  StartPointOnSheet     PointModel?
+  OriginalShapePositions ShapeModel[]
+  IsShaped              Boolean  @map("IsShaped")
+  EngineeringIndex      String?  @map("EngineeringIndex")
+  BarcodeData          String?  @map("BarcodeData")
+  SubassemblyId        String?  @map("SubassemblyId")
+  EngineeringBomItem    EngineeringBomItemModel? @relation(fields: [EngineeringPartId], references: [EngineeringID])
+  EngineeringSubassembly EngineeringSubassemblyApiModel? @relation(fields: [SubassemblyId], references: [Id])
+  @@map("EngineeringPartApi")
+}
+
+model EngineeringSubassemblyApiModel {
+  Id          String? @id @map("Id") @default(auto())
+  WidthInches  Float?   @db.Double @map("WidthInches")
+  HeightInches Float?   @db.Double @map("HeightInches")
+  DepthInches  Float?   @db.Double @map("DepthInches")
+  @@map("EngineeringSubassemblyApi")
+}
+
+model EngineeringNonNestedPartApiModel {
+  NonNestedPartId      String   @db.Uuid @id @map("NonNestedPartId") @default(auto()) @map("Non_Nested_Part_ID") @default(auto())
+  InternalEngineeringId String?  @map("InternalEngineeringId")
+  Name                  String?  @map("Name")
+  Description           String?  @map("Description")
+  Comments              String[] @map("Comments")
+  WidthImperial         Float?   @db.Double @map("WidthImperial")
+  LengthImperial        Float?   @db.Double @map("LengthImperial")
+  ThickImperial         Float?   @db.Double @map("ThickImperial")
+  EngineeringMaterialName String?  @map("EngineeringMaterialName")
+  EngineeringIndex      String?  @map("EngineeringIndex")
+  BarcodeData          String?  @map("BarcodeData")
+  @@map("EngineeringNonNestedPartApi")
+}
+
+model EngineeringRegressionTypeApiModel {
+  Group String?  @map("Group")
+  Value String?  @map("Value")
+  @@map("EngineeringRegressionTypeApi")
+}
+
+model EngineeringShipmentItemModel {
+  Quantity                 Float?   @db.Double
+  UOM                     String?  @map("UOM")
+  Location                String?  @map("Location")
+  Name                    String?  @map("Name")
+  Description             String?  @map("Description")
+  InternalEngineeringId   String?  @map("InternalEngineeringId")
+  PublicEngineeringId     String?  @map("PublicEngineeringId")
+  ShopDrawing            String?  @map("ShopDrawing")
+  DX                     Float?   @db.Double
+  DY                     Float?   @db.Double
+  DZ                     Float?   @db.Double
+  EngineeringName         String?  @map("EngineeringName")
+  DraftingPrice          Float?   @db.Double @map("DraftingPrice")
+  FabricationPrice       Float?   @db.Double @map("FabricationPrice")
+  InstallationPrice      Float?   @db.Double @map("InstallationPrice")
+  Parts                   EngineeringPartApiModel[]
+  Type                    EngineeringSyncProductProcessingType
+  Subassemblies            EngineeringSubassemblyApiModel[]
+  NonNestedParts           EngineeringNonNestedPartApiModel[]
+  RegressionType           EngineeringRegressionTypeApiModel?
+  EngineeringBomItem         EngineeringBomItemModel? @relation(fields: [InternalEngineeringId], references: [EngineeringID])
+  EngineeringNestSheet       EngineeringNestSheetModel? @relation(fields: [InternalEngineeringId], references: [NestSheetId])
+  ImportEngineeringLinkData ImportEngineeringLinkDataModel? @relation(fields: [InternalEngineeringId], references: [EngineeringBomItems])
+  @@map("EngineeringShipmentItem")
+}
+
+model EngineeringNestSheetModel {
+  NestSheetId       String? @id @map("NestSheetId") @default(auto())
+  Width             Float?   @db.Double
+  Length            Float?   @db.Double
+  Thickness          Float?   @db.Double
+  MaterialHasGrain   Boolean  @map("MaterialHasGrain")
+  EngineeringMaterialName String?  @map("EngineeringMaterialName")
+  FaceUpDescription   String?  @map("FaceUpDescription")
+  FaceDownDescription String?  @map("FaceDownDescription")
+  ProcessingStation  String?  @map("ProcessingStation")
+  PrimaryCodeFileName  String?  @map("PrimaryCodeFileName")
+  SecondaryCodeFileName String?  @map("SecondaryCodeFileName")
+  @@map("EngineeringNestSheet")
+}
+
+model ImportEngineeringLinkDataModel {
+  LoggedInUserEmail        String?  @map("LoggedInUserEmail")
+  ProjectIdentifier      String?  @map("ProjectIdentifier")
+  ProjectName              String?  @map("ProjectName")
+  EngineeringBomItems     EngineeringBomItemModel[]
+  EngineeringShipmentItems EngineeringShipmentItemModel[]
+  EngineeringNestSheets  EngineeringNestSheetModel[]
+  IsMetricSystem          Boolean  @map("IsMetricSystem")
+  EngineeringSyncImportVersion String?  @map("EngineeringSyncImportVersion")
+  @@map("ImportEngineeringLinkData")
+}
+
+model InventoryByBinLineItem {
+  MaterialName                   String?  @map("MaterialName")
+  MaterialSKU                   String?  @map("MaterialSKU")
+  ManufacturerSKU                String?  @map("ManufacturerSKU")
+  PurchaseOrder                 String?  @map("PurchaseOrder")
+  OnHandTotal                   Float?   @db.Double @map("OnHandTotal")
+  CostOfBaseUoM                 MonetaryValueModel?
+  CommonUoM                    String?  @map("CommonUoM")
+  Cost                         MonetaryValueModel?
+  ReceivedDate                  String?  @db.DateTime @map("ReceivedDate")
+  Warehouse                     String?  @map("Warehouse")
+  Damaged                      Boolean  @map("Damaged")
+  Stock                        Boolean  @map("Stock")
+  PreferredProjectId           String?  @db.Uuid @map("PreferredProjectId") @map("Preferred_Project_ID") @default(auto())
+  PreferredProjectName          String?  @map("PreferredProjectName")
+  PreferredProjectSequenceIdentifier String?  @map("PreferredProjectSequenceIdentifier")
+  BudgetGroupId                 String?  @db.Uuid @map("BudgetGroupId") @map("Budget_Group_ID") @default(auto())
+  BudgetGroupName                String?  @map("BudgetGroupName")
+  

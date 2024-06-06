@@ -1,0 +1,4552 @@
+ResultTypestring($string)
+Enum:
+[ Success, Failure, ForbiddenError, AuthenticationError, InvalidLoginWarning, CaptchaWarning, TwoFactorRequired ]
+ExceptionDetails{
+Messages	[...]
+CorrelationId	string($uuid)
+readOnly: true
+OutcomeType	ResultTypestring($string)
+Enum:
+Array [ 7 ]
+}
+MonetaryValueModel{
+Value*	number($double)
+OriginalValue*	number($double)
+readOnly: true
+CurrencyCode*	string
+}
+nullable: true
+CompanyIdentifierModel{
+Id	string($uuid)
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+}
+nullable: true
+OfficeIdentifierModel{
+Id	string($uuid)
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+}
+nullable: true
+AddedExpenseWorkOrderModel{
+Id	string($uuid)
+Name	string
+nullable: true
+Number	string
+nullable: true
+Type	string
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+PercentageOfTotalExpense	number($double)
+Expense	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+UserIdentifierModel{
+Id	string($uuid)
+readOnly: true
+FullName	string
+nullable: true
+readOnly: true
+}
+nullable: true
+AddedExpenseModel{
+Status	string
+nullable: true
+DateOfOccurrence	string($date)
+Expense	MonetaryValueModel{...}
+nullable: true
+Company	CompanyIdentifierModel{...}
+nullable: true
+PayTo	OfficeIdentifierModel{...}
+nullable: true
+SKU	string
+nullable: true
+ProjectNumber	string
+nullable: true
+ProjectName	string
+nullable: true
+BudgetGroup	string
+nullable: true
+WorkOrders	[...]
+CreatedDate	string($date-time)
+CreatedBy	UserIdentifierModel{...}
+nullable: true
+Notes	string
+nullable: true
+DebitGLAccount	string
+nullable: true
+VendorInvoiceNumber	string
+nullable: true
+InvoiceDate	string($date)
+nullable: true
+ExternalIdentifier	string
+nullable: true
+PaymentDueDate	string($date)
+nullable: true
+PaymentTerm	string
+nullable: true
+ProjectCustomerOffice	OfficeIdentifierModel{...}
+nullable: true
+ProjectCustomer	CompanyIdentifierModel{...}
+nullable: true
+}
+nullable: true
+AddedExpenseModelResultModel{
+Items	[...]
+}
+nullable: true
+MarginModel{
+Cash	MonetaryValueModel{...}
+nullable: true
+Percentage	number($double)
+}
+nullable: true
+ChangeOrderListModel{
+Id	string($uuid)
+Name	string
+nullable: true
+ProjectName	string
+nullable: true
+ProjectNo	string
+nullable: true
+WorkflowStepName	string
+nullable: true
+WorkflowStepIndex	integer($int32)
+nullable: true
+CustomerChangeOrderNumber	string
+nullable: true
+GrandTotalCost	MonetaryValueModel{...}
+nullable: true
+GrandTotalMargin	MarginModel{...}
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+NetDraftingChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetFabricationChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetProductChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetInstallChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetTotalChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+Description	string
+nullable: true
+InternalNotes	string
+nullable: true
+InternalStatus	string
+nullable: true
+ChangeOrderStatus	string
+nullable: true
+NextMilestone	string
+nullable: true
+}
+nullable: true
+ChangeOrderListModelResultModel{
+Items	[...]
+}
+nullable: true
+PeopleIdentifierModel{
+Id	string($uuid)
+FullName	string
+nullable: true
+}
+nullable: true
+AddressModel{
+Address1	string
+nullable: true
+readOnly: true
+Address2	string
+nullable: true
+readOnly: true
+City	string
+nullable: true
+readOnly: true
+State	string
+nullable: true
+readOnly: true
+ZipCode	string
+nullable: true
+readOnly: true
+Country	string
+nullable: true
+readOnly: true
+County	string
+nullable: true
+readOnly: true
+}
+nullable: true
+OfficeModel{
+Id	string($uuid)
+Name	string
+nullable: true
+Description	string
+nullable: true
+Grade	string
+nullable: true
+Email	string
+nullable: true
+Phone	string
+nullable: true
+TollFree	string
+nullable: true
+Fax	string
+nullable: true
+PhysicalAddress	AddressModel{...}
+nullable: true
+MailingAddress	AddressModel{...}
+nullable: true
+}
+nullable: true
+CompanyModel{
+Id	string($uuid)
+Name	string
+nullable: true
+ExternalIdentifier	string
+nullable: true
+Type	[...]
+WorkType	[...]
+GeographicScope	string
+nullable: true
+AnnualRevenue	MonetaryValueModel{...}
+nullable: true
+AverageProjectSize	MonetaryValueModel{...}
+nullable: true
+Phone	string
+nullable: true
+Email	string
+nullable: true
+Website	string
+nullable: true
+DunsNo	string
+nullable: true
+FscCocNumber	string
+nullable: true
+FscUrl	string
+nullable: true
+CreatedBy	PeopleIdentifierModel{...}
+nullable: true
+CreatedDate	string($date-time)
+ModifiedBy	PeopleIdentifierModel{...}
+nullable: true
+ModifiedDate	string($date-time)
+nullable: true
+Offices	[...]
+}
+nullable: true
+CompanyModelResultModel{
+Items	[...]
+}
+nullable: true
+ProjectIdentifierModel{
+Id	string($uuid)
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+ProjectNumber	string
+nullable: true
+readOnly: true
+}
+nullable: true
+ProjectWorkOrderIdentifierModel{
+Id	string($uuid)
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+Number	string
+nullable: true
+readOnly: true
+}
+nullable: true
+CostTransactionHistoryModel{
+Id	string($uuid)
+readOnly: true
+CostType	string
+nullable: true
+Type	string
+nullable: true
+readOnly: true
+Description	string
+nullable: true
+readOnly: true
+Sku	string
+nullable: true
+readOnly: true
+MaterialExternalId	string
+nullable: true
+readOnly: true
+EventDate	string($date-time)
+readOnly: true
+PostDate	string($date)
+readOnly: true
+UoM	string
+nullable: true
+readOnly: true
+Quantity	number($double)
+nullable: true
+readOnly: true
+TotalCost	MonetaryValueModel{...}
+nullable: true
+Employee	PeopleIdentifierModel{...}
+nullable: true
+Project	ProjectIdentifierModel{...}
+nullable: true
+WorkOrder	ProjectWorkOrderIdentifierModel{...}
+nullable: true
+WorkOrderStatus	string
+nullable: true
+readOnly: true
+WorkOrderType	string
+nullable: true
+readOnly: true
+JobCostingStatus	string
+nullable: true
+readOnly: true
+Vendor	CompanyIdentifierModel{...}
+nullable: true
+VendorInvoiceNumber	string
+nullable: true
+readOnly: true
+BudgetGroupName	string
+nullable: true
+readOnly: true
+DebitGlAccount	string
+nullable: true
+readOnly: true
+CreditGlAccount	string
+nullable: true
+readOnly: true
+ExpeditingGlAccount	string
+nullable: true
+readOnly: true
+ShippingGlAccount	string
+nullable: true
+readOnly: true
+HandlingGlAccount	string
+nullable: true
+readOnly: true
+CartonGlAccount	string
+nullable: true
+readOnly: true
+OtherFreightGlAccount	string
+nullable: true
+readOnly: true
+PurchaseOrderNumber	string
+nullable: true
+readOnly: true
+BinName	string
+nullable: true
+readOnly: true
+WarehouseName	string
+nullable: true
+readOnly: true
+FacilityName	string
+nullable: true
+readOnly: true
+EmployeeFacilityName	string
+nullable: true
+readOnly: true
+}
+nullable: true
+CostTransactionHistoryModelResultModel{
+Items	[...]
+}
+nullable: true
+DateManagementStepModel{
+Name	string
+nullable: true
+readOnly: true
+MilestoneName	string
+nullable: true
+readOnly: true
+StepIndex	integer($int32)
+readOnly: true
+StepType	string
+nullable: true
+readOnly: true
+TargetDate	string($date)
+nullable: true
+readOnly: true
+ActualDate	string($date)
+nullable: true
+readOnly: true
+}
+nullable: true
+LaborItemModel{
+Name	string
+nullable: true
+JobCosting	string
+nullable: true
+EstimatedCost	MonetaryValueModel{...}
+nullable: true
+EstimatedHours	string($time-span)
+PendingCost	MonetaryValueModel{...}
+nullable: true
+PendingHours	string($time-span)
+PlannedCost	MonetaryValueModel{...}
+nullable: true
+PlannedHours	string($time-span)
+ActualCost	MonetaryValueModel{...}
+nullable: true
+ActualHours	string($time-span)
+}
+nullable: true
+DateManagementWorkOrderModel{
+Number	string
+nullable: true
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+Id	string($uuid)
+readOnly: true
+Type	string
+nullable: true
+readOnly: true
+Status	string
+nullable: true
+readOnly: true
+PlannedStartDate	string($date)
+nullable: true
+readOnly: true
+ActualStartDate	string($date)
+nullable: true
+readOnly: true
+MaterialNeededDate	string($date)
+nullable: true
+readOnly: true
+PlannedEndDate	string($date)
+nullable: true
+readOnly: true
+PlannedEndMonth	string
+nullable: true
+readOnly: true
+ActualEndDate	string($date)
+nullable: true
+readOnly: true
+ActualEndMonth	string
+nullable: true
+readOnly: true
+InvoiceStatus	string
+nullable: true
+readOnly: true
+Steps	[...]
+LaborItems	[...]
+}
+nullable: true
+DateManagementProjectModel{
+ProjectNumber	string
+nullable: true
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+ProjectId	string($uuid)
+readOnly: true
+WorkOrders	[...]
+}
+nullable: true
+EmployeeModel{
+Id	string($uuid)
+readOnly: true
+LoginEmail	string
+nullable: true
+readOnly: true
+FirstName	string
+nullable: true
+readOnly: true
+LastName	string
+nullable: true
+readOnly: true
+Roles	[...]
+CreatedDate	string($date-time)
+readOnly: true
+LastLoginDate	string($date-time)
+nullable: true
+readOnly: true
+Status	string
+nullable: true
+readOnly: true
+CreatedBy	string
+nullable: true
+readOnly: true
+OfficePhone	string
+nullable: true
+readOnly: true
+Department	string
+nullable: true
+readOnly: true
+ShiftSchedule	string
+nullable: true
+readOnly: true
+TimeZone	string
+nullable: true
+readOnly: true
+EmploymentStatus	string
+nullable: true
+readOnly: true
+DateOfHire	string($date)
+nullable: true
+readOnly: true
+ExternalIdentifier	string
+nullable: true
+readOnly: true
+LastClockInDate	string($date-time)
+nullable: true
+readOnly: true
+LastClockOutDate	string($date-time)
+nullable: true
+readOnly: true
+LastClockInIp	string
+nullable: true
+readOnly: true
+LastClockOutIp	string
+nullable: true
+readOnly: true
+HasPin	boolean
+readOnly: true
+}
+nullable: true
+AddressDto{
+Address1	string
+nullable: true
+readOnly: true
+Address2	string
+nullable: true
+readOnly: true
+City	string
+nullable: true
+readOnly: true
+State	string
+nullable: true
+readOnly: true
+ZipCode	string
+nullable: true
+readOnly: true
+Country	string
+nullable: true
+readOnly: true
+County	string
+nullable: true
+readOnly: true
+SearchString	string
+nullable: true
+readOnly: true
+}
+EmergencyContactDto{
+FirstName	string
+nullable: true
+LastName	string
+nullable: true
+Relationship	string
+nullable: true
+EmailAddress	string
+nullable: true
+HomePhoneNumber	string
+nullable: true
+MobilePhoneNumber	string
+nullable: true
+}
+MonetaryDto{
+Value	number($double)
+CurrencyCode	string
+nullable: true
+}
+CompensationApiDto{
+EffectiveDate	string
+nullable: true
+Type	string
+nullable: true
+Rate	MonetaryDto{...}
+EndDate	string
+nullable: true
+Description	string
+nullable: true
+}
+EmployeesImportApiDto{
+Id	string($uuid)
+nullable: true
+LoginEmail	string
+nullable: true
+FirstName	string
+nullable: true
+MiddleName	string
+nullable: true
+LastName	string
+nullable: true
+Prefix	string
+nullable: true
+Suffix	string
+nullable: true
+HomePhone	string
+nullable: true
+CellPhone	string
+nullable: true
+PhysicalAddress	AddressDto{...}
+MailingAddress	AddressDto{...}
+OfficePhone	string
+nullable: true
+Department	string
+nullable: true
+ShiftSchedule	string
+nullable: true
+TimeZone	string
+nullable: true
+EmploymentStatus	string
+nullable: true
+DateOfHire	string
+nullable: true
+ExternalIdentifier	string
+nullable: true
+EmergencyContact	EmergencyContactDto{...}
+Compensations	[...]
+Notes	[...]
+}
+PermissionNamestring($string)
+Enum:
+Array [ 540 ]
+UserImageModel{
+description:	
+UserDetailsDto - represents user's image for Innergy API
+
+Identifier	string
+nullable: true
+readOnly: true
+Full path to the file
+
+Name	string
+nullable: true
+readOnly: true
+File name
+
+}
+nullable: true
+UserStatusinteger($int32)
+Enum:
+[ 0, 1 ]
+UserContextModel{
+description:	
+UserDetailsDto - represents user details for Innergy API
+
+UserId	string($uuid)
+LoginEmail	string
+nullable: true
+FirstName	string
+nullable: true
+LastName	string
+nullable: true
+TenantName	string
+nullable: true
+Permissions	[...]
+TimeZoneInfoId	string
+nullable: true
+IsRoot	boolean
+Image	UserImageModel{...}
+nullable: true
+Status	UserStatusinteger($int32)
+Enum:
+Array [ 2 ]
+IsActive	boolean
+}
+nullable: true
+EmergencyContactModel{
+FirstName	string
+nullable: true
+readOnly: true
+LastName	string
+nullable: true
+readOnly: true
+Relationship	string
+nullable: true
+readOnly: true
+EmailAddress	string
+nullable: true
+readOnly: true
+HomePhoneNumber	string
+nullable: true
+readOnly: true
+MobilePhoneNumber	string
+nullable: true
+readOnly: true
+}
+nullable: true
+CompensationModel{
+EffectiveDate	string($date)
+readOnly: true
+Type	string
+nullable: true
+readOnly: true
+Rate	MonetaryValueModel{...}
+nullable: true
+EndDate	string($date)
+nullable: true
+readOnly: true
+Description	string
+nullable: true
+readOnly: true
+}
+nullable: true
+NoteModel{
+Text	string
+nullable: true
+readOnly: true
+CreatedBy	PeopleIdentifierModel{...}
+nullable: true
+CreatedOnDate	string($date-time)
+readOnly: true
+}
+nullable: true
+EmployeesAdvancedModel{
+Id	string($uuid)
+readOnly: true
+LoginEmail	string
+nullable: true
+readOnly: true
+FirstName	string
+nullable: true
+readOnly: true
+MiddleName	string
+nullable: true
+readOnly: true
+LastName	string
+nullable: true
+readOnly: true
+Prefix	string
+nullable: true
+readOnly: true
+Suffix	string
+nullable: true
+readOnly: true
+HomePhone	string
+nullable: true
+readOnly: true
+CellPhone	string
+nullable: true
+readOnly: true
+PhysicalAddress	AddressModel{...}
+nullable: true
+MaillingAddress	AddressModel{...}
+nullable: true
+Roles	[...]
+CreatedDate	string($date-time)
+readOnly: true
+LastLoginDate	string($date-time)
+nullable: true
+readOnly: true
+Status	string
+nullable: true
+readOnly: true
+CreatedBy	string
+nullable: true
+readOnly: true
+OfficePhone	string
+nullable: true
+readOnly: true
+Department	string
+nullable: true
+readOnly: true
+ShiftSchedule	string
+nullable: true
+readOnly: true
+TimeZone	string
+nullable: true
+readOnly: true
+EmploymentStatus	string
+nullable: true
+readOnly: true
+DateOfHire	string($date)
+nullable: true
+readOnly: true
+ExternalIdentifier	string
+nullable: true
+readOnly: true
+EmergencyContact	EmergencyContactModel{...}
+nullable: true
+Compensations	[...]
+Notes	[...]
+}
+nullable: true
+EngineeringBomItemModel{
+Name	string
+nullable: true
+UOM	string
+nullable: true
+Quantity	number($double)
+EngineeringID	string
+nullable: true
+PanelWidth	number($double)
+PanelLength	number($double)
+PanelThickness	number($double)
+IsFromNesting	boolean
+Type	integer($int32)
+}
+nullable: true
+PointModel{
+Order	integer($int32)
+X	number($double)
+Y	number($double)
+}
+nullable: true
+PositionModel{
+Points	[...]
+}
+nullable: true
+ShapeGeometryinteger($int32)
+Enum:
+Array [ 8 ]
+DimensionsCountinteger($int32)
+Enum:
+[ 0, 1, 2, 3 ]
+ShapeModel{
+Position	PositionModel{...}
+nullable: true
+Figure	ShapeGeometryinteger($int32)
+Enum:
+Array [ 8 ]
+Dimensions	DimensionsCountinteger($int32)
+Enum:
+Array [ 4 ]
+}
+nullable: true
+EngineeringPartApiModel{
+EngineeringPartId	string
+nullable: true
+ShipmentItemId	string
+nullable: true
+Name	string
+nullable: true
+Width	number($double)
+Length	number($double)
+Thickness	number($double)
+EngineeringMaterialId	string
+nullable: true
+EngineeringMaterialName	string
+nullable: true
+NestSheetId	string
+nullable: true
+Description	string
+nullable: true
+RotationAngleOnSheet	number($double)
+StartPointOnSheet	PointModel{...}
+nullable: true
+OriginalShapePositions	[...]
+IsShaped	boolean
+EngineeringIndex	string
+nullable: true
+BarcodeData	string
+nullable: true
+SubassemblyId	string
+nullable: true
+}
+nullable: true
+EngineeringSyncProductProcessingTypeinteger($int32)
+Enum:
+Array [ 2 ]
+EngineeringSubassemblyApiModel{
+Id	string
+nullable: true
+WidthInches	number($double)
+HeightInches	number($double)
+DepthInches	number($double)
+}
+nullable: true
+EngineeringNonNestedPartApiModel{
+NonNestedPartId	string($uuid)
+InternalEngineeringId	string
+nullable: true
+Name	string
+nullable: true
+Description	string
+nullable: true
+Comments	[...]
+WidthImperial	number($double)
+LengthImperial	number($double)
+ThickImperial	number($double)
+EngineeringMaterialName	string
+nullable: true
+EngineeringIndex	string
+nullable: true
+BarcodeData	string
+nullable: true
+}
+nullable: true
+EngineeringRegressionTypeApiModel{
+Group	string
+nullable: true
+Value	string
+nullable: true
+}
+nullable: true
+EngineeringShipmentItemModel{
+Quantity	number($double)
+UOM	string
+nullable: true
+Location	string
+nullable: true
+Name	string
+nullable: true
+Description	string
+nullable: true
+InternalEngineeringId	string
+nullable: true
+PublicEngineeringId	string
+nullable: true
+ShopDrawing	string
+nullable: true
+DX	number($double)
+DY	number($double)
+DZ	number($double)
+EngineeringName	string
+nullable: true
+DraftingPrice	number($double)
+FabricationPrice	number($double)
+InstallationPrice	number($double)
+Parts	[...]
+Type	EngineeringSyncProductProcessingTypeinteger($int32)
+Enum:
+Array [ 2 ]
+Subassemblies	[...]
+NonNestedParts	[...]
+RegressionType	EngineeringRegressionTypeApiModel{...}
+nullable: true
+}
+nullable: true
+EngineeringNestSheetModel{
+NestSheetId	string
+nullable: true
+Width	number($double)
+Length	number($double)
+Thickness	number($double)
+MaterialHasGrain	boolean
+EngineeringMaterialName	string
+nullable: true
+FaceUpDescription	string
+nullable: true
+FaceDownDescription	string
+nullable: true
+ProcessingStation	string
+nullable: true
+PrimaryCodeFileName	string
+nullable: true
+SecondaryCodeFileName	string
+nullable: true
+}
+nullable: true
+ImportEngineeringLinkDataModel{
+LoggedInUserEmail*	string
+ProjectIdentifier	string
+nullable: true
+ProjectName	string
+nullable: true
+EngineeringBomItems*	[...]
+EngineeringShipmentItems*	[...]
+EngineeringNestSheets	[...]
+IsMetricSystem	boolean
+EngineeringSyncImportVersion	string
+nullable: true
+}
+nullable: true
+InventoryByBinLineItem{
+MaterialName	string
+nullable: true
+MaterialSKU	string
+nullable: true
+ManufacturerSKU	string
+nullable: true
+PurchaseOrder	string
+nullable: true
+OnHandTotal	number($double)
+CostOfBaseUoM	MonetaryValueModel{...}
+nullable: true
+CommonUoM	string
+nullable: true
+Cost	MonetaryValueModel{...}
+nullable: true
+ReceivedDate	string($date-time)
+nullable: true
+Warehouse	string
+nullable: true
+Damaged	boolean
+Stock	boolean
+PreferredProjectId	string($uuid)
+nullable: true
+PreferredProjectName	string
+nullable: true
+PreferredProjectSequenceIdentifier	string
+nullable: true
+BudgetGroupId	string($uuid)
+BudgetGroupName	string
+nullable: true
+ProjectId	string($uuid)
+nullable: true
+ProjectName	string
+nullable: true
+ProjectSequenceIdentifier	string
+nullable: true
+WorkOrderId	string($uuid)
+nullable: true
+WorkOrderName	string
+nullable: true
+WorkOrderSequenceIdentifier	string
+nullable: true
+ExternalId	string
+nullable: true
+MaterialCharacteristics	string
+nullable: true
+}
+nullable: true
+InventoryByUomModel{
+BaseUoM	string
+nullable: true
+readOnly: true
+OnHandTotal	number($double)
+readOnly: true
+Cost	MonetaryValueModel{...}
+nullable: true
+Items	[...]
+}
+nullable: true
+InventoryByBinModel{
+Bin	string
+nullable: true
+readOnly: true
+OnHandTotal	number($double)
+readOnly: true
+Cost	MonetaryValueModel{...}
+nullable: true
+Items	[...]
+}
+nullable: true
+InventoryByBinModelResultModel{
+Items	[...]
+}
+nullable: true
+MaterialInBinModel{
+Bin	string
+nullable: true
+Warehouse	string
+nullable: true
+OnHandTotal	number($double)
+BaseUoM	string
+nullable: true
+CommonUoM	string
+nullable: true
+Damaged	boolean
+CostOfBaseUoM	MonetaryValueModel{...}
+nullable: true
+Cost	MonetaryValueModel{...}
+nullable: true
+ReceivedDate	string($date-time)
+nullable: true
+PurchaseOrder	string
+nullable: true
+ProjectId	string($uuid)
+nullable: true
+ProjectName	string
+nullable: true
+ProjectSequenceIdentifier	string
+nullable: true
+WorkOrderId	string($uuid)
+nullable: true
+WorkOrderName	string
+nullable: true
+WorkOrderSequenceIdentifier	string
+nullable: true
+}
+nullable: true
+InventoryByMaterialModel{
+MaterialName	string
+nullable: true
+MaterialSKU	string
+nullable: true
+MaterialExternalId	string
+nullable: true
+OnHandTotal	number($double)
+TotalCost	MonetaryValueModel{...}
+nullable: true
+Facility	string
+nullable: true
+ManufacturerSKU	string
+nullable: true
+BinNames	string
+nullable: true
+BinCount	integer($int32)
+Stock	boolean
+ExternalId	string
+nullable: true
+MaterialCharacteristics	string
+nullable: true
+Items	[...]
+}
+nullable: true
+InventoryByMaterialModelResultModel{
+Items	[...]
+}
+nullable: true
+InventoryByReceiptModel{
+MaterialName	string
+nullable: true
+MaterialSKU	string
+nullable: true
+MaterialExternalId	string
+nullable: true
+ManufacturerSKU	string
+nullable: true
+VendorSKU	string
+nullable: true
+Facility	string
+nullable: true
+Warehouse	string
+nullable: true
+Bin	string
+nullable: true
+Damaged	boolean
+Vendor	string
+nullable: true
+VendorOffice	string
+nullable: true
+PurchaseOrder	string
+nullable: true
+PoLineItem	integer($int32)
+DebitGlAccount	string
+nullable: true
+CreditGlAccount	string
+nullable: true
+ReceivedDate	string($date-time)
+nullable: true
+VendorInvoice	string
+nullable: true
+OnHandTotal	number($double)
+TotalCostOnHand	MonetaryValueModel{...}
+nullable: true
+BaseUoM	string
+nullable: true
+CostOfBaseUoM	MonetaryValueModel{...}
+nullable: true
+CommonUoM	string
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+ExpediteCost	MonetaryValueModel{...}
+nullable: true
+InboundCost	MonetaryValueModel{...}
+nullable: true
+HandlingCost	MonetaryValueModel{...}
+nullable: true
+CartonCost	MonetaryValueModel{...}
+nullable: true
+OtherCost	MonetaryValueModel{...}
+nullable: true
+Tax	MonetaryValueModel{...}
+nullable: true
+ProjectId	string($uuid)
+nullable: true
+ProjectName	string
+nullable: true
+ProjectSequenceIdentifier	string
+nullable: true
+WorkOrderId	string($uuid)
+nullable: true
+WorkOrderName	string
+nullable: true
+WorkOrderSequenceIdentifier	string
+nullable: true
+ExternalId	string
+nullable: true
+MaterialCharacteristics	string
+nullable: true
+}
+nullable: true
+InventoryByReceiptModelResultModel{
+Items	[...]
+}
+nullable: true
+MasterInventoryModel{
+MaterialName	string
+nullable: true
+MaterialSKU	string
+nullable: true
+OnHandTotal	number($double)
+CommonUoM	string
+nullable: true
+Bin	string
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+Cost	MonetaryValueModel{...}
+nullable: true
+Stock	boolean
+PurchaseOrder	string
+nullable: true
+PoLineItem	integer($int32)
+nullable: true
+BaseUoM	string
+nullable: true
+CostOfBaseUoM	MonetaryValueModel{...}
+nullable: true
+Facility	string
+nullable: true
+VendorInvoice	string
+nullable: true
+Vendor	string
+nullable: true
+VendorOffice	string
+nullable: true
+VendorSKU	string
+nullable: true
+ExpediteCost	MonetaryValueModel{...}
+nullable: true
+InboundCost	MonetaryValueModel{...}
+nullable: true
+HandlingCost	MonetaryValueModel{...}
+nullable: true
+CartonCost	MonetaryValueModel{...}
+nullable: true
+OtherCost	MonetaryValueModel{...}
+nullable: true
+Tax	MonetaryValueModel{...}
+nullable: true
+MaterialExternalId	string
+nullable: true
+DebitGlAccount	string
+nullable: true
+CreditGlAccount	string
+nullable: true
+ProjectName	string
+nullable: true
+ProjectSequenceIdentifier	string
+nullable: true
+SpecialCharacteristics	string
+nullable: true
+DateReceived	string($date-time)
+nullable: true
+Damaged	boolean
+ManufacturerSKU	string
+nullable: true
+Warehouse	string
+nullable: true
+PostDate	string($date)
+nullable: true
+BudgetGroup	string
+nullable: true
+ProjectManager	string
+nullable: true
+ProjectStatus	string
+nullable: true
+WorkOrderSequenceIdentifier	string
+nullable: true
+WorkOrderName	string
+nullable: true
+ManufacturedInWorkOrder	string
+nullable: true
+ProjectFinishes	string
+nullable: true
+}
+nullable: true
+MasterInventoryModelResultModel{
+Items	[...]
+}
+nullable: true
+NumberNamePairModel{
+Number	string
+nullable: true
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+}
+nullable: true
+ApiCustomField{
+Name	string
+nullable: true
+Type	integer($int32)
+Value	string
+nullable: true
+}
+nullable: true
+InvoiceItemModel{
+Id	string($uuid)
+readOnly: true
+InvoiceNumber	string
+nullable: true
+readOnly: true
+InvoiceCreationDate	string($date)
+readOnly: true
+InvoiceDate	string($date)
+nullable: true
+readOnly: true
+PeriodToStart	string($date)
+nullable: true
+readOnly: true
+PeriodToEnd	string($date)
+nullable: true
+readOnly: true
+DueDate	string($date)
+nullable: true
+readOnly: true
+Status	string
+nullable: true
+readOnly: true
+GeneralContractor	PeopleIdentifierModel{...}
+nullable: true
+Company	CompanyIdentifierModel{...}
+nullable: true
+ProjectManager	PeopleIdentifierModel{...}
+nullable: true
+CreatedBy	PeopleIdentifierModel{...}
+nullable: true
+ModifiedBy	PeopleIdentifierModel{...}
+nullable: true
+Architect	PeopleIdentifierModel{...}
+nullable: true
+ToOwner	PeopleIdentifierModel{...}
+nullable: true
+ContractFor	string
+nullable: true
+readOnly: true
+ApplicationNo	string
+nullable: true
+readOnly: true
+InvoiceAmount	MonetaryValueModel{...}
+nullable: true
+NewChangeByChangeOrders	MonetaryValueModel{...}
+nullable: true
+TotalCompletedAndStored	MonetaryValueModel{...}
+nullable: true
+Retainage	MonetaryValueModel{...}
+nullable: true
+RetainageReleased	MonetaryValueModel{...}
+nullable: true
+RetainageHeld	MonetaryValueModel{...}
+nullable: true
+RetainageBilled	MonetaryValueModel{...}
+nullable: true
+TotalEarnedLessRetainage	MonetaryValueModel{...}
+nullable: true
+LessPreviousCertificatesForPayment	MonetaryValueModel{...}
+nullable: true
+CurrentPaymentDue	MonetaryValueModel{...}
+nullable: true
+TotalPaymentDue	MonetaryValueModel{...}
+nullable: true
+TotalPayments	MonetaryValueModel{...}
+nullable: true
+BalanceToFinish	MonetaryValueModel{...}
+nullable: true
+AmountCertified	MonetaryValueModel{...}
+nullable: true
+IsInvoiceAmountDifferentThatAmountCertified	boolean
+nullable: true
+readOnly: true
+DistributeTo	string
+nullable: true
+readOnly: true
+State	string
+nullable: true
+readOnly: true
+County	string
+nullable: true
+readOnly: true
+Facility	string
+nullable: true
+readOnly: true
+ExternalIdentifier	string
+nullable: true
+readOnly: true
+PdfUrl	string
+nullable: true
+readOnly: true
+ModificationDate	string($date-time)
+nullable: true
+readOnly: true
+BillingType	string
+nullable: true
+readOnly: true
+WorkOrders	[...]
+Customer	string
+nullable: true
+readOnly: true
+Note	string
+nullable: true
+readOnly: true
+CustomFields	[...]
+}
+nullable: true
+InvoiceItemProjectModel{
+Project	ProjectIdentifierModel{...}
+nullable: true
+OriginalContractValue	MonetaryValueModel{...}
+nullable: true
+ContractValue	MonetaryValueModel{...}
+nullable: true
+ScheduledValuePreTax	MonetaryValueModel{...}
+nullable: true
+TotalScheduledValue	MonetaryValueModel{...}
+nullable: true
+SalesTax	MonetaryValueModel{...}
+nullable: true
+Items	[...]
+}
+nullable: true
+InvoiceItemProjectModelResultModel{
+Items	[...]
+}
+nullable: true
+InvoiceDrawLineItemModel{
+ItemNumber	string
+nullable: true
+DescriptionOfItem	string
+nullable: true
+Tags	[...]
+ARGLDebitAccountNumber	string
+nullable: true
+ARGLDebitAccountName	string
+nullable: true
+RevenueGLCreditAccountNumber	string
+nullable: true
+RevenueGLCreditAccountName	string
+nullable: true
+ScheduledValuePreTax	MonetaryValueModel{...}
+nullable: true
+SalesTax	MonetaryValueModel{...}
+nullable: true
+TotalScheduledValue	MonetaryValueModel{...}
+nullable: true
+FromPreviousApplication	MonetaryValueModel{...}
+nullable: true
+ThisPeriod	MonetaryValueModel{...}
+nullable: true
+MaterialsPresentlyStored	MonetaryValueModel{...}
+nullable: true
+TotalCompletedAndStored	MonetaryValueModel{...}
+nullable: true
+Percent	number($double)
+nullable: true
+BalanceToFinish	MonetaryValueModel{...}
+nullable: true
+RetainageThisPeriod	MonetaryValueModel{...}
+nullable: true
+RetainagePercent	number($double)
+nullable: true
+TotalCompletedAndStoredRetainage	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+InvoiceDrawModel{
+InvoiceNumber	string
+nullable: true
+InvoiceStatusFullName	string
+nullable: true
+InvoiceStatus	string
+nullable: true
+ProjectName	string
+nullable: true
+ProjectNumber	string
+nullable: true
+CreatedBy	string
+nullable: true
+CreatedById	string($uuid)
+CreatedDate	string($date)
+DrawLineItems	[...]
+}
+nullable: true
+InvoiceDrawModelResultModel{
+Items	[...]
+}
+nullable: true
+InvoiceStatusstring($string)
+Enum:
+Array [ 6 ]
+InvoiceLineItemModel{
+ExternalIdentifier	string
+nullable: true
+readOnly: true
+WorkOrder	NumberNamePairModel{...}
+nullable: true
+BillingType	string
+nullable: true
+readOnly: true
+InvoiceNumber	string
+nullable: true
+readOnly: true
+LineNumber	integer($int32)
+readOnly: true
+Description	string
+nullable: true
+readOnly: true
+InvoiceDate	string($date)
+nullable: true
+readOnly: true
+InvoiceDueDate	string($date)
+nullable: true
+readOnly: true
+InvoiceCreationDate	string($date)
+readOnly: true
+InvoicedAmount	MonetaryValueModel{...}
+nullable: true
+ScheduledValuePreTax	MonetaryValueModel{...}
+nullable: true
+TotalScheduledValue	MonetaryValueModel{...}
+nullable: true
+UnbilledAmount	MonetaryValueModel{...}
+nullable: true
+AmountToBill	MarginModel{...}
+nullable: true
+GlAccountNumber	string
+nullable: true
+readOnly: true
+RevenueGlNumber	string
+nullable: true
+readOnly: true
+Discount	MarginModel{...}
+nullable: true
+DiscountGlAccountNumber	string
+nullable: true
+readOnly: true
+Allowance	MarginModel{...}
+nullable: true
+AllowanceGlAccountNumber	string
+nullable: true
+readOnly: true
+SubTotal	MonetaryValueModel{...}
+nullable: true
+AmountDueBeforeTax	MonetaryValueModel{...}
+nullable: true
+Retainage	MarginModel{...}
+nullable: true
+RetainageGlAccountNumber	string
+nullable: true
+readOnly: true
+SalesTax	MonetaryValueModel{...}
+nullable: true
+AmountDue	MonetaryValueModel{...}
+nullable: true
+GeneralContractorId	string($uuid)
+nullable: true
+readOnly: true
+GeneralContractorName	string
+nullable: true
+readOnly: true
+CompanyId	string($uuid)
+nullable: true
+readOnly: true
+CompanyName	string
+nullable: true
+readOnly: true
+CustomerId	string($uuid)
+nullable: true
+readOnly: true
+Customer	string
+nullable: true
+readOnly: true
+}
+nullable: true
+InvoiceLineItemProjectModel{
+Project	ProjectIdentifierModel{...}
+nullable: true
+Items	[...]
+ProjectManager	PeopleIdentifierModel{...}
+nullable: true
+}
+nullable: true
+InvoiceLineItemProjectModelResultModel{
+Items	[...]
+}
+nullable: true
+BurdenApiModel{
+Name	string
+nullable: true
+Description	string
+nullable: true
+FixedAmount	MonetaryValueModel{...}
+nullable: true
+PercentageValue	number($double)
+}
+nullable: true
+LibraryLaborItemModel{
+LaborId	string($uuid)
+Name	string
+nullable: true
+ExternalId	string
+nullable: true
+DirectCost	MonetaryValueModel{...}
+nullable: true
+TotalCost	MonetaryValueModel{...}
+nullable: true
+Margin	MonetaryValueModel{...}
+nullable: true
+MarginPercent	number($double)
+TotalSell	MonetaryValueModel{...}
+nullable: true
+Department	string
+nullable: true
+JobCosting	string
+nullable: true
+DebitGLAccount	string
+nullable: true
+Type	string
+nullable: true
+WorkOrderType	string
+nullable: true
+Burdens	[...]
+HideInKiosk	boolean
+}
+nullable: true
+LibraryLaborItemModelResultModel{
+Items	[...]
+}
+nullable: true
+LaborKanbanItemApiModel{
+WorkOrderNumber	string
+nullable: true
+WorkOrderName	string
+nullable: true
+LaborItemName	string
+nullable: true
+LaborItemStepName	string
+nullable: true
+LaborItemStepNumber	integer($int32)
+IsCompleted	boolean
+DateCompleted	string($date-time)
+nullable: true
+KanbanColumnOrder	integer($int32)
+nullable: true
+}
+nullable: true
+LaborKanbanItemApiModelResultModel{
+Items	[...]
+}
+nullable: true
+ManufacturerModel{
+Name	string
+nullable: true
+SKU	string
+nullable: true
+UniqueId	string($uuid)
+nullable: true
+}
+nullable: true
+WeightModel{
+Value	number($double)
+Symbol	string
+nullable: true
+}
+nullable: true
+VendorModel{
+CompanyOffice	string
+nullable: true
+VendorMaterialSKU	string
+nullable: true
+LeadTime	integer($int32)
+nullable: true
+LastPurchasePrice	MonetaryValueModel{...}
+nullable: true
+AveragePrice	MonetaryValueModel{...}
+nullable: true
+Last12MonthAverage	MonetaryValueModel{...}
+nullable: true
+PreferredVendor	boolean
+}
+nullable: true
+MaterialsModel{
+Name	string
+nullable: true
+SKU	string
+nullable: true
+ExternalId	string
+nullable: true
+URL	string
+nullable: true
+UoMGroup	string
+nullable: true
+BaseUoM	string
+nullable: true
+DefaultCommonUoM	string
+nullable: true
+Cost	MonetaryValueModel{...}
+nullable: true
+Margin	MarginModel{...}
+nullable: true
+PriceStock	MonetaryValueModel{...}
+nullable: true
+Manufacturer	ManufacturerModel{...}
+nullable: true
+Status	string
+nullable: true
+QuotedBy	string
+nullable: true
+QuotedOn	string($date-time)
+nullable: true
+SpecialCharacteristics	[...]
+Weight	WeightModel{...}
+nullable: true
+Grain	boolean
+ExternalApproval	boolean
+BudgetGroup	string
+nullable: true
+ExpenseOrCostOfGoodsSoldGLAccount	string
+nullable: true
+InventoryGLAccount	string
+nullable: true
+AccountsPayableGLAccount	string
+nullable: true
+ExpenseUponReceipt	boolean
+Description	string
+nullable: true
+Note	string
+nullable: true
+Vendors	[...]
+}
+nullable: true
+MaterialResult{
+CreateDate	string($date-time)
+readOnly: true
+Items	[...]
+}
+nullable: true
+MaterialToBuyDetailModel{
+Date	string($date)
+Identifier	string
+nullable: true
+Name	string
+nullable: true
+CreatedBy	PeopleIdentifierModel{...}
+nullable: true
+CreatedDate	string($date-time)
+Quantity	number($double)
+FutureOnHand	number($double)
+Notes	string
+nullable: true
+PurchaseOrderNumber	string
+nullable: true
+Vendor	string
+nullable: true
+Project	string
+nullable: true
+WorkOrder	string
+nullable: true
+}
+nullable: true
+MaterialToBuyModel{
+MaterialName	string
+nullable: true
+MaterialExternalId	string
+nullable: true
+SoQ	number($double)
+CommonUoM	string
+nullable: true
+CostPerCommonUoM	MonetaryValueModel{...}
+nullable: true
+TotalCost	MonetaryValueModel{...}
+nullable: true
+OnHand	number($double)
+Needed	number($double)
+OnOrder	number($double)
+QtyOverUnder	number($double)
+MinStock	number($double)
+nullable: true
+MaxStock	number($double)
+nullable: true
+StdOrderQty	number($double)
+nullable: true
+PreferredVendor	string
+nullable: true
+PreferredVendorLeadTime	number($double)
+nullable: true
+Facility	string
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+BaseUoM	string
+nullable: true
+Stock	boolean
+SpecChar	string
+nullable: true
+NotesCount	integer($int32)
+Details	[...]
+}
+nullable: true
+MaterialToBuyModelResultModel{
+Items	[...]
+}
+nullable: true
+OperationDurationProductivityEntryModel{
+Duration	number($double)
+Quantity	number($double)
+}
+nullable: true
+OperationDurationModel{
+FacilityName	string
+nullable: true
+LaborItem	string
+nullable: true
+TimeUnit	string
+nullable: true
+Enabled	boolean
+LineType	string
+nullable: true
+Equation	[...]
+DataPoints	[...]
+}
+nullable: true
+OperationModel{
+Name	string
+nullable: true
+SequenceId	string
+nullable: true
+BaseUoM	string
+nullable: true
+OperationCategory	string
+nullable: true
+Description	string
+nullable: true
+LaborCurves	[...]
+}
+nullable: true
+OperationModelResultModel{
+Items	[...]
+}
+nullable: true
+OpportunityConvertedToProjectModel{
+ConversionDate	string($date-time)
+nullable: true
+Name	string
+nullable: true
+Number	string
+nullable: true
+}
+nullable: true
+BidSimpleModel{
+Id	string($uuid)
+readOnly: true
+BidName	string
+nullable: true
+readOnly: true
+BidNumber	string
+nullable: true
+readOnly: true
+IsPrimaryBid	boolean
+readOnly: true
+}
+nullable: true
+OpportunityModel{
+Id	string($uuid)
+Name	string
+nullable: true
+Number	string
+nullable: true
+ExternalIdentifier	string
+nullable: true
+CreatedBy	UserIdentifierModel{...}
+nullable: true
+CreatedOn	string($date-time)
+nullable: true
+CurrentBid	string
+nullable: true
+Address	AddressModel{...}
+nullable: true
+Status	string
+nullable: true
+Step	string
+nullable: true
+BidDate	string($date-time)
+nullable: true
+PlanDate	string($date)
+nullable: true
+SpecsDate	string($date)
+nullable: true
+SubmittedDate	string($date-time)
+nullable: true
+FirstDelivery	string($date)
+LastDelivery	string($date)
+SubstantialCompletion	string($date)
+CloseDate	string($date)
+nullable: true
+ProjectedRevenue	MonetaryValueModel{...}
+nullable: true
+BasisOfAward	string
+nullable: true
+BidType	string
+nullable: true
+Priority	string
+nullable: true
+ConstructionStandards	string
+nullable: true
+EstimatedBidHours	string($time-span)
+nullable: true
+PlanQuality	string
+nullable: true
+ServicesRequired	[...]
+WinningCompetitors	[...]
+BidRequirements	[...]
+TargetMarginPercentage	number($double)
+nullable: true
+WinProbability	number($double)
+Tags	[...]
+Estimators	[...]
+Salespersons	[...]
+Coordinators	[...]
+Owner	UserIdentifierModel{...}
+nullable: true
+Assignee	UserIdentifierModel{...}
+nullable: true
+ProjectTeam	[...]
+ProjectMembers	[...]
+LaborCost	MonetaryValueModel{...}
+nullable: true
+FabricationHours	string($time-span)
+nullable: true
+DraftingCost	MonetaryValueModel{...}
+nullable: true
+FabricationCost	MonetaryValueModel{...}
+nullable: true
+ProductionCost	MonetaryValueModel{...}
+nullable: true
+PreSalesTaxDraftingPrice	MonetaryValueModel{...}
+nullable: true
+PreSalesTaxFabricationPrice	MonetaryValueModel{...}
+nullable: true
+PreSalesTaxProductPrice	MonetaryValueModel{...}
+nullable: true
+DraftingMargin	MarginModel{...}
+nullable: true
+FabricationMargin	MarginModel{...}
+nullable: true
+ProductionMargin	MarginModel{...}
+nullable: true
+DraftingSalesTax	MonetaryValueModel{...}
+nullable: true
+FabricationSalesTax	MonetaryValueModel{...}
+nullable: true
+ProductSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalProductPrice	MonetaryValueModel{...}
+nullable: true
+InstallCost	MonetaryValueModel{...}
+nullable: true
+MaterialCost	MonetaryValueModel{...}
+nullable: true
+InstallHours	string($time-span)
+nullable: true
+PreSalesTaxInstallPrice	MonetaryValueModel{...}
+nullable: true
+InstallMargin	MarginModel{...}
+nullable: true
+InstallSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalInstallPrice	MonetaryValueModel{...}
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+GrandTotalCost	MonetaryValueModel{...}
+nullable: true
+TotalPreSalesTaxPrice	MonetaryValueModel{...}
+nullable: true
+TotalSalesTax	MonetaryValueModel{...}
+nullable: true
+GrandTotalMargin	MarginModel{...}
+nullable: true
+DraftingMarginPerHour	MonetaryValueModel{...}
+nullable: true
+FabricationMarginPerHour	MonetaryValueModel{...}
+nullable: true
+ProdMarginPerHour	MonetaryValueModel{...}
+nullable: true
+InstallMarginPerHour	MonetaryValueModel{...}
+nullable: true
+TotalMarginPerHour	MonetaryValueModel{...}
+nullable: true
+Project	OpportunityConvertedToProjectModel{...}
+nullable: true
+Bids	[...]
+AwardedTo	OfficeIdentifierModel{...}
+nullable: true
+AwardedToRoles	[...]
+Architect	[...]
+CustomFields	[...]
+MasterNote	string
+nullable: true
+IsIncludedInForecaster	boolean
+}
+nullable: true
+OpportunityModelResultModel{
+Items	[...]
+}
+nullable: true
+OverheadListItemModel{
+Id	string($uuid)
+Name	string
+nullable: true
+ExternalId	string
+nullable: true
+CostType	string
+nullable: true
+Cost	MonetaryValueModel{...}
+nullable: true
+Margin	MonetaryValueModel{...}
+nullable: true
+PercentMargin	number($double)
+nullable: true
+BudgetGroup	string
+nullable: true
+GlAccount	string
+nullable: true
+Description	string
+nullable: true
+Price	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+OverheadListItemModelResultModel{
+Items	[...]
+}
+nullable: true
+ProjectConvertedFromOpportunityModel{
+Id	string($uuid)
+Name	string
+nullable: true
+ConversionDate	string($date-time)
+nullable: true
+ConvertedBy	UserIdentifierModel{...}
+nullable: true
+}
+nullable: true
+ProjectModel{
+Id	string($uuid)
+Number	string
+nullable: true
+Name	string
+nullable: true
+ExternalId	string
+nullable: true
+Customer	OfficeIdentifierModel{...}
+nullable: true
+Address	AddressModel{...}
+nullable: true
+Status	string
+nullable: true
+ProjectManager	UserIdentifierModel{...}
+nullable: true
+FirstDelivery	string($date)
+nullable: true
+SubstantialCompletion	string($date)
+nullable: true
+ConstructionStandards	string
+nullable: true
+Tags	[...]
+Requirements	[...]
+BillingDay	integer($int32)
+nullable: true
+BilledValue	MonetaryValueModel{...}
+nullable: true
+PercentBilled	number($double)
+nullable: true
+ContractNotes	string
+nullable: true
+WorkOrdersValue	MonetaryValueModel{...}
+nullable: true
+BidPercentageMargin	number($double)
+nullable: true
+PlannedPercentageMargin	number($double)
+nullable: true
+ActualPercentageMargin	number($double)
+nullable: true
+Opportunity	ProjectConvertedFromOpportunityModel{...}
+nullable: true
+OriginalPreTaxDraftingRevenue	MonetaryValueModel{...}
+nullable: true
+OriginalPreTaxFabricationRevenue	MonetaryValueModel{...}
+nullable: true
+OriginalPreTaxProductRevenue	MonetaryValueModel{...}
+nullable: true
+OriginalDraftingSalesTax	MonetaryValueModel{...}
+nullable: true
+OriginalFabricationSalesTax	MonetaryValueModel{...}
+nullable: true
+OriginalProductSalesTax	MonetaryValueModel{...}
+nullable: true
+OriginalDraftingSalesTaxPercentage	number($double)
+nullable: true
+OriginalFabricationSalesTaxPercentage	number($double)
+nullable: true
+OriginalProductSalesTaxPercentage	number($double)
+nullable: true
+OriginalTotalDraftingAmount	MonetaryValueModel{...}
+nullable: true
+OriginalTotalFabricationAmount	MonetaryValueModel{...}
+nullable: true
+OriginalTotalProductAmount	MonetaryValueModel{...}
+nullable: true
+OriginalPreTaxInstallRevenue	MonetaryValueModel{...}
+nullable: true
+OriginalInstallSalesTax	MonetaryValueModel{...}
+nullable: true
+OriginalInstallSalesTaxPercentage	number($double)
+nullable: true
+OriginalTotalInstallAmount	MonetaryValueModel{...}
+nullable: true
+OriginalPreTaxTotalRevenue	MonetaryValueModel{...}
+nullable: true
+OriginalTotalSalesTax	MonetaryValueModel{...}
+nullable: true
+OriginalTotalSalesTaxPercentage	number($double)
+nullable: true
+OriginalTotalContract	MonetaryValueModel{...}
+nullable: true
+PreTaxProductRevenue	MonetaryValueModel{...}
+nullable: true
+ProductSalesTax	MonetaryValueModel{...}
+nullable: true
+ProductSalesTaxPercentage	number($double)
+nullable: true
+TotalProductAmount	MonetaryValueModel{...}
+nullable: true
+PreTaxInstallRevenue	MonetaryValueModel{...}
+nullable: true
+InstallSalesTax	MonetaryValueModel{...}
+nullable: true
+InstallSalesTaxPercentage	number($double)
+nullable: true
+TotalInstallAmount	MonetaryValueModel{...}
+nullable: true
+PreTaxTotalRevenue	MonetaryValueModel{...}
+nullable: true
+TotalSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalSalesTaxPercentage	number($double)
+nullable: true
+TotalContract	MonetaryValueModel{...}
+nullable: true
+EstimatedBudgetGroupsTotalCost	MonetaryValueModel{...}
+nullable: true
+PendingBudgetGroupsTotalCost	MonetaryValueModel{...}
+nullable: true
+PlannedBudgetGroupsTotalCost	MonetaryValueModel{...}
+nullable: true
+ActualBudgetGroupsTotalCost	MonetaryValueModel{...}
+nullable: true
+EstimatedLaborItemsTotalCost	MonetaryValueModel{...}
+nullable: true
+PendingLaborItemsTotalCost	MonetaryValueModel{...}
+nullable: true
+PlannedLaborItemsTotalCost	MonetaryValueModel{...}
+nullable: true
+ActualLaborItemsTotalCost	MonetaryValueModel{...}
+nullable: true
+EstimatedLaborItemsTotalHours	string($time-span)
+PendingLaborItemsTotalHours	string($time-span)
+PlannedLaborItemsTotalHours	string($time-span)
+ActualLaborItemsTotalHours	string($time-span)
+EstimatedGrandTotalCost	MonetaryValueModel{...}
+nullable: true
+PendingGrandTotalCost	MonetaryValueModel{...}
+nullable: true
+PlannedGrandTotalCost	MonetaryValueModel{...}
+nullable: true
+ActualGrandTotalCost	MonetaryValueModel{...}
+nullable: true
+Estimators	[...]
+SalesPersons	[...]
+Coordinators	[...]
+Engineers	[...]
+CustomFields	[...]
+Installers	[...]
+MasterNote	string
+nullable: true
+EstimatedDraftingUseTax	MonetaryValueModel{...}
+nullable: true
+EstimatedFabricationUseTax	MonetaryValueModel{...}
+nullable: true
+EstimatedInstallUseTax	MonetaryValueModel{...}
+nullable: true
+EstimatedTotalUseTax	MonetaryValueModel{...}
+nullable: true
+NextMilestone	string
+nullable: true
+WorkflowStepIndex	integer($int32)
+nullable: true
+WorkflowStepName	string
+nullable: true
+}
+nullable: true
+ProjectModelResultModel{
+Items	[...]
+}
+nullable: true
+ProjectBudgetDistributedCostModel{
+Name	string
+nullable: true
+Amount	MonetaryValueModel{...}
+nullable: true
+Category	string
+nullable: true
+Location	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+ProductName	string
+nullable: true
+ProductDescription	string
+nullable: true
+ProductSKU	string
+nullable: true
+}
+nullable: true
+ProjectBudgetDistributedCostResultModel{
+ProjectNumber	string
+nullable: true
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+Items	[...]
+}
+nullable: true
+ProjectBudgetMaterialModel{
+Name	string
+nullable: true
+SKU	string
+nullable: true
+ProjectOrigin	string
+nullable: true
+BidOrigin	string
+nullable: true
+BudgetGroup	string
+nullable: true
+BaseUoM	string
+nullable: true
+UoMGroup	string
+nullable: true
+Location	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+DrawingReference	string
+nullable: true
+ProductName	string
+nullable: true
+ProductDescription	string
+nullable: true
+ProductSKU	string
+nullable: true
+ProductLibraryName	string
+nullable: true
+TypicalGroupName	string
+nullable: true
+PreferredVendor	string
+nullable: true
+PreferredVendorLeadTime	number($double)
+nullable: true
+Notes	string
+nullable: true
+SpecialCharacteristics	[...]
+SwappedFrom	string
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+Quantity	number($double)
+TotalCost	MonetaryValueModel{...}
+nullable: true
+Margin	MarginModel{...}
+nullable: true
+Price	MonetaryValueModel{...}
+nullable: true
+IncludedInApproval	boolean
+ApprovalStatus	string
+nullable: true
+ApprovalType	string
+nullable: true
+DateSubmitted	string($date-time)
+nullable: true
+DateApproved	string($date-time)
+nullable: true
+ApprovedBy	string
+nullable: true
+TotalConverted	number($double)
+TotalConvertedCost	MonetaryValueModel{...}
+nullable: true
+TotalRemaining	number($double)
+TotalRemainingCost	MonetaryValueModel{...}
+nullable: true
+Variance	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+ProjectBudgetMaterialResultModel{
+ProjectNumber	string
+nullable: true
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+Items	[...]
+}
+nullable: true
+ProjectBudgetOperationModel{
+Name	string
+nullable: true
+ProjectOrigin	string
+nullable: true
+BidOrigin	string
+nullable: true
+Location	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+DrawingReference	string
+nullable: true
+LaborItem	string
+nullable: true
+LibraryLaborItem	string
+nullable: true
+ProductName	string
+nullable: true
+ProductDescription	string
+nullable: true
+ProductLibraryName	string
+nullable: true
+ProductSKU	string
+nullable: true
+TypicalGroupName	string
+nullable: true
+HourlyRate	MonetaryValueModel{...}
+nullable: true
+Quantity	number($double)
+BaseUoM	string
+nullable: true
+LaborHours	string($time-span)
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+TotalCost	MonetaryValueModel{...}
+nullable: true
+Margin	MarginModel{...}
+nullable: true
+Price	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+ProjectBudgetOperationResultModel{
+ProjectNumber	string
+nullable: true
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+Items	[...]
+}
+nullable: true
+ProjectBudgetOverheadModel{
+ProjectOrigin	string
+nullable: true
+BidOrigin	string
+nullable: true
+Name	string
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+Quantity	number($double)
+Profit	MarginModel{...}
+nullable: true
+Sell	MonetaryValueModel{...}
+nullable: true
+CostType	string
+nullable: true
+Location	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+ProductName	string
+nullable: true
+ProductDescription	string
+nullable: true
+ProductSKU	string
+nullable: true
+BudgetGroup	string
+nullable: true
+}
+nullable: true
+ProjectBudgetOverheadResultModel{
+ProjectNumber	string
+nullable: true
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+Items	[...]
+}
+nullable: true
+ProjectProductWorkOrder{
+Id	string($uuid)
+Number	string
+nullable: true
+Name	string
+nullable: true
+Step	string
+nullable: true
+}
+nullable: true
+ProjectBudgetProductModel{
+Name	string
+nullable: true
+Description	string
+nullable: true
+ProjectOrigin	string
+nullable: true
+BidOrigin	string
+nullable: true
+QuantCount	number($double)
+QuantUoM	number($double)
+NetDraftingChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetFabricationChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetProductChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetInstallChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetTotalChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+DraftingWorkOrder	ProjectProductWorkOrder{...}
+nullable: true
+ProductionWorkOrder	ProjectProductWorkOrder{...}
+nullable: true
+InstallWorkOrder	ProjectProductWorkOrder{...}
+nullable: true
+SKU	string
+nullable: true
+LibraryName	string
+nullable: true
+X	number($double)
+nullable: true
+Y	number($double)
+nullable: true
+Z	number($double)
+nullable: true
+Location	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+DrawingReference	string
+nullable: true
+TypicalGroupName	string
+nullable: true
+TaxType	string
+nullable: true
+Tags	[...]
+EstimatedCost	MonetaryValueModel{...}
+nullable: true
+MaterialCost	MonetaryValueModel{...}
+nullable: true
+ExtendedMaterialCost	MonetaryValueModel{...}
+nullable: true
+LaborCost	MonetaryValueModel{...}
+nullable: true
+ExtendedLaborCost	MonetaryValueModel{...}
+nullable: true
+LaborHours	string($time-span)
+nullable: true
+UnitLaborHours	string($time-span)
+nullable: true
+TotalUseTaxCost	MonetaryValueModel{...}
+nullable: true
+Cash	MonetaryValueModel{...}
+nullable: true
+CashMargin	MarginModel{...}
+nullable: true
+ExtendedProductCost	MonetaryValueModel{...}
+nullable: true
+ProductBaselineMarginPercentage	number($double)
+nullable: true
+ProductBaselineMargin	MonetaryValueModel{...}
+nullable: true
+ProductBaselinePrice	MonetaryValueModel{...}
+nullable: true
+ProductBumpDiscountPercentage	number($double)
+nullable: true
+ProductBumpDiscount	MonetaryValueModel{...}
+nullable: true
+PreSalesTaxProductPrice	MonetaryValueModel{...}
+nullable: true
+ProductAdjustedMargin	MarginModel{...}
+nullable: true
+ProductSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalProductPrice	MonetaryValueModel{...}
+nullable: true
+InstallCost	MonetaryValueModel{...}
+nullable: true
+ExtendedInstallCost	MonetaryValueModel{...}
+nullable: true
+InstallHours	string($time-span)
+UnitInstallHours	string($time-span)
+InstallBaselineMargin	MarginModel{...}
+nullable: true
+InstallBaselinePrice	MonetaryValueModel{...}
+nullable: true
+InstallBumpDiscount	MarginModel{...}
+nullable: true
+PreSalesTaxInstallPrice	MonetaryValueModel{...}
+nullable: true
+InstallAdjustedMargin	MarginModel{...}
+nullable: true
+InstallSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalInstallPrice	MonetaryValueModel{...}
+nullable: true
+GrandTotalCost	MonetaryValueModel{...}
+nullable: true
+GrandTotalMargin	MarginModel{...}
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+TotalHours	string($time-span)
+UnitTotalHours	string($time-span)
+TotalPreSalesTaxPrice	MonetaryValueModel{...}
+nullable: true
+TotalSalesTax	MonetaryValueModel{...}
+nullable: true
+DraftingLaborCost	MonetaryValueModel{...}
+nullable: true
+FabricationLaborCost	MonetaryValueModel{...}
+nullable: true
+ExtendedDraftingLaborCost	MonetaryValueModel{...}
+nullable: true
+ExtendedFabricationLaborCost	MonetaryValueModel{...}
+nullable: true
+DraftingHours	string($time-span)
+UnitDraftingHours	string($time-span)
+ExtendedDraftingCost	MonetaryValueModel{...}
+nullable: true
+DraftingBaselineMargin	MarginModel{...}
+nullable: true
+FabricationBaselineMargin	MarginModel{...}
+nullable: true
+DraftingBaselinePrice	MonetaryValueModel{...}
+nullable: true
+FabricationBaselinePrice	MonetaryValueModel{...}
+nullable: true
+DraftingBumpDiscount	MarginModel{...}
+nullable: true
+FabricationBumpDiscount	MarginModel{...}
+nullable: true
+PreSalesTaxDraftingPrice	MonetaryValueModel{...}
+nullable: true
+PreSalesTaxFabricationPrice	MonetaryValueModel{...}
+nullable: true
+DraftingAdjustedMargin	MarginModel{...}
+nullable: true
+FabricationAdjustedMargin	MarginModel{...}
+nullable: true
+DraftingSalesTax	MonetaryValueModel{...}
+nullable: true
+FabricationSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalDraftingPrice	MonetaryValueModel{...}
+nullable: true
+TotalFabricationPrice	MonetaryValueModel{...}
+nullable: true
+ProductType	string
+nullable: true
+CustomFields	[...]
+FabricationCash	MonetaryValueModel{...}
+nullable: true
+FabricationCashMargin	MarginModel{...}
+nullable: true
+DraftingCash	MonetaryValueModel{...}
+nullable: true
+DraftingCashMargin	MarginModel{...}
+nullable: true
+InstallationCash	MonetaryValueModel{...}
+nullable: true
+InstallationCashMargin	MarginModel{...}
+nullable: true
+}
+nullable: true
+ProjectBudgetProductResultModel{
+ProjectNumber	string
+nullable: true
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+Items	[...]
+}
+nullable: true
+BudgetGroupModel{
+Name	string
+nullable: true
+EstimatedCost	MonetaryValueModel{...}
+nullable: true
+PendingCost	MonetaryValueModel{...}
+nullable: true
+PlannedCost	MonetaryValueModel{...}
+nullable: true
+ActualCost	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+ProjectJobCostingModel{
+ProjectName	string
+nullable: true
+ProjectNumber	string
+nullable: true
+TotalContract	MonetaryValueModel{...}
+nullable: true
+BilledValue	MonetaryValueModel{...}
+nullable: true
+Status	string
+nullable: true
+Tags	[...]
+BudgetGroups	[...]
+LaborItems	[...]
+EstimatedTotalUseTax	MonetaryValueModel{...}
+nullable: true
+EstimatedDraftingUseTax	MonetaryValueModel{...}
+nullable: true
+EstimatedFabricationUseTax	MonetaryValueModel{...}
+nullable: true
+EstimatedInstallUseTax	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+ProjectJobCostingModelResultModel{
+Items	[...]
+}
+nullable: true
+ProjectSovCostSummaryModel{
+BidMaterial	MonetaryValueModel{...}
+nullable: true
+BidInstall	MonetaryValueModel{...}
+nullable: true
+BidTax	MonetaryValueModel{...}
+nullable: true
+BidTotal	MonetaryValueModel{...}
+nullable: true
+SovMaterial	MonetaryValueModel{...}
+nullable: true
+SovInstall	MonetaryValueModel{...}
+nullable: true
+SovOther	MonetaryValueModel{...}
+nullable: true
+SovTax	MonetaryValueModel{...}
+nullable: true
+SovTotal	MonetaryValueModel{...}
+nullable: true
+SovCurrentVariance	MonetaryValueModel{...}
+nullable: true
+TotalVariance	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+ProjectSovLineItemModel{
+ItemNo	integer($int32)
+Description	string
+nullable: true
+Tags	[...]
+BidMaterial	MonetaryValueModel{...}
+nullable: true
+BidInstall	MonetaryValueModel{...}
+nullable: true
+BidTax	MonetaryValueModel{...}
+nullable: true
+BidTotal	MonetaryValueModel{...}
+nullable: true
+SovMaterial	MonetaryValueModel{...}
+nullable: true
+SovInstall	MonetaryValueModel{...}
+nullable: true
+SovOther	MonetaryValueModel{...}
+nullable: true
+SovTax	MonetaryValueModel{...}
+nullable: true
+GrossTotal	MonetaryValueModel{...}
+nullable: true
+Variance	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+ProjectSovModel{
+Summary	ProjectSovCostSummaryModel{...}
+nullable: true
+LineItems	[...]
+}
+nullable: true
+WorkOrderStatusstring($string)
+Enum:
+Array [ 2 ]
+ProjectWorkOrderGlobalModel{
+ProjectNumber	string
+nullable: true
+ProjectName	string
+nullable: true
+Id	string($uuid)
+Number	string
+nullable: true
+Name	string
+nullable: true
+Type	string
+nullable: true
+CreatedBy	UserIdentifierModel{...}
+nullable: true
+CreatedOn	string($date-time)
+Facility	string
+nullable: true
+Outsourced	boolean
+Tags	[...]
+Status	string
+nullable: true
+MaterialOnHandDays	integer($int32)
+Step	string
+nullable: true
+StepIndex	integer($int32)
+StepType	string
+nullable: true
+InvoiceStatus	string
+nullable: true
+Owner	UserIdentifierModel{...}
+nullable: true
+Assignees	[...]
+Drafters	[...]
+Engineers	[...]
+Estimators	[...]
+SalesPersons	[...]
+Coordinators	[...]
+Installers	[...]
+ProjectManager	UserIdentifierModel{...}
+nullable: true
+PlannedStartDate	string($date)
+nullable: true
+ActualStartDate	string($date)
+nullable: true
+PlannedCriticalDate	string($date)
+nullable: true
+MaterialNeededDate	string($date)
+nullable: true
+PlannedEndMonth	string
+nullable: true
+ActualEndDate	string($date)
+nullable: true
+ActualEndMonth	string
+nullable: true
+Instructions	string
+nullable: true
+EstimatedLaborCost	MonetaryValueModel{...}
+nullable: true
+EstimatedMaterialCost	MonetaryValueModel{...}
+nullable: true
+EstimatedCost	MonetaryValueModel{...}
+nullable: true
+EstimatedHours	string($time-span)
+EstimatedMargin	MarginModel{...}
+nullable: true
+RemainingHours	string($time-span)
+PlannedHours	string($time-span)
+PlannedLaborCost	MonetaryValueModel{...}
+nullable: true
+LaborGrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+ActualLaborHours	string($time-span)
+ActualCost	MonetaryValueModel{...}
+nullable: true
+ActualMaterialCost	MonetaryValueModel{...}
+nullable: true
+ActualLaborCost	MonetaryValueModel{...}
+nullable: true
+ActualExpensesCost	MonetaryValueModel{...}
+nullable: true
+ActualMargin	MarginModel{...}
+nullable: true
+MarginVariance	MonetaryValueModel{...}
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+PreSalesTaxPrice	MonetaryValueModel{...}
+nullable: true
+SalesTax	MonetaryValueModel{...}
+nullable: true
+ExternalIdentifier	string
+nullable: true
+ProductsQuantitySum	number($double)
+ShipmentItemsQuantitySum	number($double)
+ReadyForFieldVerificationStepItemPlannedDate	string($date)
+nullable: true
+ReadyForFieldVerificationStepItemActualDate	string($date)
+nullable: true
+FieldVerifiedStepItemPlannedDate	string($date)
+nullable: true
+FieldVerifiedStepItemActualDate	string($date)
+nullable: true
+PlannedLaborLastUpdatedDate	string($date-time)
+nullable: true
+PercentInstalled	number($double)
+PercentInstalledLastUpdatedDate	string($date-time)
+nullable: true
+ProjectedInstallRemainingHours	string($time-span)
+ShipmentDate	string($date)
+nullable: true
+JobCostingStatus	string
+nullable: true
+TeamLead	UserIdentifierModel{...}
+nullable: true
+Impediments	[...]
+CustomFields	[...]
+MasterNote	string
+nullable: true
+WorkflowName	string
+nullable: true
+WorkflowStepEnteredDate	string($date-time)
+WorkflowStepEnteredDays	integer($int32)
+}
+nullable: true
+ProjectWorkOrderGlobalModelResultModel{
+Items	[...]
+}
+nullable: true
+ProjectWorkOrderModel{
+Id	string($uuid)
+Number	string
+nullable: true
+Name	string
+nullable: true
+Type	string
+nullable: true
+CreatedBy	UserIdentifierModel{...}
+nullable: true
+CreatedOn	string($date-time)
+Facility	string
+nullable: true
+Outsourced	boolean
+Tags	[...]
+Status	string
+nullable: true
+MaterialOnHandDays	integer($int32)
+Step	string
+nullable: true
+StepIndex	integer($int32)
+StepType	string
+nullable: true
+InvoiceStatus	string
+nullable: true
+Owner	UserIdentifierModel{...}
+nullable: true
+Assignees	[...]
+Drafters	[...]
+Engineers	[...]
+Estimators	[...]
+SalesPersons	[...]
+Coordinators	[...]
+Installers	[...]
+ProjectManager	UserIdentifierModel{...}
+nullable: true
+PlannedStartDate	string($date)
+nullable: true
+ActualStartDate	string($date)
+nullable: true
+PlannedCriticalDate	string($date)
+nullable: true
+MaterialNeededDate	string($date)
+nullable: true
+PlannedEndMonth	string
+nullable: true
+ActualEndDate	string($date)
+nullable: true
+ActualEndMonth	string
+nullable: true
+Instructions	string
+nullable: true
+EstimatedLaborCost	MonetaryValueModel{...}
+nullable: true
+EstimatedMaterialCost	MonetaryValueModel{...}
+nullable: true
+EstimatedCost	MonetaryValueModel{...}
+nullable: true
+EstimatedHours	string($time-span)
+EstimatedMargin	MarginModel{...}
+nullable: true
+RemainingHours	string($time-span)
+PlannedHours	string($time-span)
+PlannedLaborCost	MonetaryValueModel{...}
+nullable: true
+LaborGrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+ActualLaborHours	string($time-span)
+ActualCost	MonetaryValueModel{...}
+nullable: true
+ActualMaterialCost	MonetaryValueModel{...}
+nullable: true
+ActualLaborCost	MonetaryValueModel{...}
+nullable: true
+ActualExpensesCost	MonetaryValueModel{...}
+nullable: true
+ActualMargin	MarginModel{...}
+nullable: true
+MarginVariance	MonetaryValueModel{...}
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+PreSalesTaxPrice	MonetaryValueModel{...}
+nullable: true
+SalesTax	MonetaryValueModel{...}
+nullable: true
+ExternalIdentifier	string
+nullable: true
+ProductsQuantitySum	number($double)
+ShipmentItemsQuantitySum	number($double)
+ReadyForFieldVerificationStepItemPlannedDate	string($date)
+nullable: true
+ReadyForFieldVerificationStepItemActualDate	string($date)
+nullable: true
+FieldVerifiedStepItemPlannedDate	string($date)
+nullable: true
+FieldVerifiedStepItemActualDate	string($date)
+nullable: true
+PlannedLaborLastUpdatedDate	string($date-time)
+nullable: true
+PercentInstalled	number($double)
+PercentInstalledLastUpdatedDate	string($date-time)
+nullable: true
+ProjectedInstallRemainingHours	string($time-span)
+ShipmentDate	string($date)
+nullable: true
+JobCostingStatus	string
+nullable: true
+TeamLead	UserIdentifierModel{...}
+nullable: true
+Impediments	[...]
+CustomFields	[...]
+MasterNote	string
+nullable: true
+WorkflowName	string
+nullable: true
+WorkflowStepEnteredDate	string($date-time)
+WorkflowStepEnteredDays	integer($int32)
+}
+nullable: true
+ProjectWorkOrderResultModel{
+ProjectNumber	string
+nullable: true
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+Items	[...]
+}
+nullable: true
+BudgetGroupsLaborItemsWorkOrderModel{
+Name	string
+nullable: true
+Number	string
+nullable: true
+Type	string
+nullable: true
+WorkflowStatus	string
+nullable: true
+Status	string
+nullable: true
+InvoiceStatus	string
+nullable: true
+BudgetGroups	[...]
+LaborItems	[...]
+UseTax	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+ProjectWorkOrderJobCostingModel{
+ProjectName	string
+nullable: true
+ProjectNumber	string
+nullable: true
+TotalContract	MonetaryValueModel{...}
+nullable: true
+BilledValue	MonetaryValueModel{...}
+nullable: true
+Status	string
+nullable: true
+Tags	[...]
+WorkOrders	[...]
+}
+nullable: true
+ProjectWorkOrderJobCostingResult{
+CreateDate	string($date-time)
+readOnly: true
+Items	[...]
+}
+nullable: true
+ProjectWorkOrderNoteReactionModel{
+Name	string
+nullable: true
+Authors	[...]
+}
+nullable: true
+ProjectWorkOrderNoteModel{
+Id	string($uuid)
+ProjectWorkOrderId	string($uuid)
+Body	string
+nullable: true
+IsPinned	boolean
+AuthorName	string
+nullable: true
+AuthorId	string($uuid)
+CreatedDate	string($date-time)
+ModifiedDate	string($date-time)
+nullable: true
+ParentId	string($uuid)
+nullable: true
+Reactions	[...]
+}
+nullable: true
+CreateProjectWorkOrderNoteModel{
+Body*	string
+ParentId	string($uuid)
+nullable: true
+}
+nullable: true
+ProposalInformationModel{
+ProposalName	string
+nullable: true
+ProposalDescription	string
+nullable: true
+CompanyName	string
+nullable: true
+FacilityAddress	AddressModel{...}
+nullable: true
+Salesperson	string
+nullable: true
+SalespersonEmail	string
+nullable: true
+SalespersonPhone	string
+nullable: true
+Estimator	string
+nullable: true
+EstimatorEmail	string
+nullable: true
+EstimatorPhone	string
+nullable: true
+FacilityPhone	string
+nullable: true
+TenantName	string
+nullable: true
+TenantWebsite	string
+nullable: true
+}
+nullable: true
+CustomerInformationModel{
+Customer	string
+nullable: true
+CustomerAddress	AddressModel{...}
+nullable: true
+CustomerContact	string
+nullable: true
+CustomerContactEmail	string
+nullable: true
+CustomerContactPhone	string
+nullable: true
+CustomerContactFax	string
+nullable: true
+}
+nullable: true
+JobDetailsModel{
+JobName	string
+nullable: true
+JobNumber	string
+nullable: true
+JobLocation	string
+nullable: true
+Architect	string
+nullable: true
+Number	string
+nullable: true
+DateAndTime	string($date-time)
+nullable: true
+PlanDate	string($date)
+nullable: true
+SpecDate	string($date)
+nullable: true
+Addenda	string
+nullable: true
+DeliveryDate	string($date)
+nullable: true
+Address	AddressModel{...}
+nullable: true
+}
+nullable: true
+ScopeElementModel{
+Name	string
+nullable: true
+}
+nullable: true
+BudgetTotalsModel{
+Material	MonetaryValueModel{...}
+nullable: true
+Install	MonetaryValueModel{...}
+nullable: true
+Total	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+AlternateTotalsModel{
+Name	string
+nullable: true
+Description	string
+nullable: true
+Status	string
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+InstallPrice	MonetaryValueModel{...}
+nullable: true
+MaterialPrice	MonetaryValueModel{...}
+nullable: true
+DescriptionPlainText	string
+nullable: true
+}
+nullable: true
+ScopeOfWorkModel{
+FormattedProductsList	string
+nullable: true
+Location	string
+nullable: true
+DrawingReferences	string
+nullable: true
+Description	string
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+MaterialPrice	MonetaryValueModel{...}
+nullable: true
+InstallPrice	MonetaryValueModel{...}
+nullable: true
+ScopeNote	string
+nullable: true
+}
+nullable: true
+ProductTakeoffMethodinteger($int32)
+Enum:
+Array [ 3 ]
+TaxRegulationsTypeinteger($int32)
+Enum:
+Array [ 6 ]
+SmartTagModel{
+Name	string
+nullable: true
+Value	string
+nullable: true
+}
+nullable: true
+BudgetDataModel{
+OriginName	string
+nullable: true
+Id	string($uuid)
+Name	string
+nullable: true
+Description	string
+nullable: true
+LibraryName	string
+nullable: true
+SKU	string
+nullable: true
+QuantityCount	number($double)
+QuantUoM	number($double)
+QuantUoMMetric	number($double)
+UoM	ProductTakeoffMethodinteger($int32)
+Enum:
+Array [ 3 ]
+X	number($double)
+nullable: true
+Y	number($double)
+nullable: true
+Z	number($double)
+nullable: true
+Location	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+TaxType	TaxRegulationsTypeinteger($int32)
+Enum:
+Array [ 6 ]
+DrawingReference	string
+nullable: true
+Tags	[...]
+MaterialCost	MonetaryValueModel{...}
+nullable: true
+ExtendedMaterialCost	MonetaryValueModel{...}
+nullable: true
+LaborCost	MonetaryValueModel{...}
+nullable: true
+ExtendedLaborCost	MonetaryValueModel{...}
+nullable: true
+FabricationHours	string($time-span)
+UnitFabricationHours	string($time-span)
+TotalUseTaxCost	MonetaryValueModel{...}
+nullable: true
+ProductCost	MonetaryValueModel{...}
+nullable: true
+FabricationCash	MonetaryValueModel{...}
+nullable: true
+FabricationCashMargin	MarginModel{...}
+nullable: true
+DraftingCash	MonetaryValueModel{...}
+nullable: true
+DraftingCashMargin	MarginModel{...}
+nullable: true
+InstallationCash	MonetaryValueModel{...}
+nullable: true
+InstallationCashMargin	MarginModel{...}
+nullable: true
+Cash	MonetaryValueModel{...}
+nullable: true
+CashMargin	MarginModel{...}
+nullable: true
+ExtendedProductCost	MonetaryValueModel{...}
+nullable: true
+ProductBaselineMargin	MarginModel{...}
+nullable: true
+ProductBaselinePrice	MonetaryValueModel{...}
+nullable: true
+ProductBumpDiscount	MarginModel{...}
+nullable: true
+PreSalesTaxProductPrice	MonetaryValueModel{...}
+nullable: true
+ProductAdjustedMargin	MarginModel{...}
+nullable: true
+ProductSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalProductPrice	MonetaryValueModel{...}
+nullable: true
+TotalInstallCost	MonetaryValueModel{...}
+nullable: true
+ExtendedInstallCost	MonetaryValueModel{...}
+nullable: true
+InstallHours	string($time-span)
+UnitInstallHours	string($time-span)
+InstallBaselineMargin	MarginModel{...}
+nullable: true
+InstallBaselinePrice	MonetaryValueModel{...}
+nullable: true
+InstallBumpDiscount	MarginModel{...}
+nullable: true
+PreSalesTaxInstallPrice	MonetaryValueModel{...}
+nullable: true
+InstallAdjustedMargin	MarginModel{...}
+nullable: true
+InstallSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalInstallPrice	MonetaryValueModel{...}
+nullable: true
+TotalHours	string($time-span)
+UnitTotalHours	string($time-span)
+GrandTotalCost	MonetaryValueModel{...}
+nullable: true
+TotalPreSalesTaxPrice	MonetaryValueModel{...}
+nullable: true
+TotalSalesTax	MonetaryValueModel{...}
+nullable: true
+GrandTotalMargin	MarginModel{...}
+nullable: true
+GrandTotalPrice	MonetaryValueModel{...}
+nullable: true
+NetDraftingChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetFabricationChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetInstallChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetProductChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+NetTotalChangeFromBaseBid	MonetaryValueModel{...}
+nullable: true
+TypicalGroupName	string
+nullable: true
+HiddenFromProposal	boolean
+DraftingLaborCost	MonetaryValueModel{...}
+nullable: true
+FabricationLaborCost	MonetaryValueModel{...}
+nullable: true
+ExtendedDraftingLaborCost	MonetaryValueModel{...}
+nullable: true
+ExtendedFabricationLaborCost	MonetaryValueModel{...}
+nullable: true
+DraftingHours	string($time-span)
+UnitDraftingHours	string($time-span)
+ExtendedDraftingCost	MonetaryValueModel{...}
+nullable: true
+DraftingBaselineMargin	MarginModel{...}
+nullable: true
+FabricationBaselineMargin	MarginModel{...}
+nullable: true
+DraftingBaselinePrice	MonetaryValueModel{...}
+nullable: true
+FabricationBaselinePrice	MonetaryValueModel{...}
+nullable: true
+DraftingBumpDiscount	MarginModel{...}
+nullable: true
+FabricationBumpDiscount	MarginModel{...}
+nullable: true
+PreSalesTaxDraftingPrice	MonetaryValueModel{...}
+nullable: true
+PreSalesTaxFabricationPrice	MonetaryValueModel{...}
+nullable: true
+DraftingAdjustedMargin	MarginModel{...}
+nullable: true
+FabricationAdjustedMargin	MarginModel{...}
+nullable: true
+DraftingSalesTax	MonetaryValueModel{...}
+nullable: true
+FabricationSalesTax	MonetaryValueModel{...}
+nullable: true
+TotalDraftingPrice	MonetaryValueModel{...}
+nullable: true
+TotalFabricationPrice	MonetaryValueModel{...}
+nullable: true
+ProductType	string
+nullable: true
+CustomFields	[...]
+}
+nullable: true
+ProposalMaterialModel{
+OriginName	string
+nullable: true
+BudgetGroup	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+Location	string
+nullable: true
+DrawingReference	string
+nullable: true
+Name	string
+nullable: true
+ProductId	string($uuid)
+ProductName	string
+nullable: true
+ProductDescription	string
+nullable: true
+ProductSKU	string
+nullable: true
+PrroductLibraryName	string
+nullable: true
+BaseUoM	string
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+QuantCount	number($double)
+TotalCost	MonetaryValueModel{...}
+nullable: true
+Margin	MarginModel{...}
+nullable: true
+Price	MonetaryValueModel{...}
+nullable: true
+Stock	boolean
+nullable: true
+TypicalGroupName	string
+nullable: true
+}
+nullable: true
+ProposalOperationModel{
+OriginName	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+Location	string
+nullable: true
+DrawingReference	string
+nullable: true
+OperationName	string
+nullable: true
+LaborItem	string
+nullable: true
+ProductId	string($uuid)
+ProductName	string
+nullable: true
+ProductDescription	string
+nullable: true
+ProductSKU	string
+nullable: true
+ProductLibraryName	string
+nullable: true
+HourlyRate	MonetaryValueModel{...}
+nullable: true
+Quantity	number($double)
+BaseUoM	string
+nullable: true
+TotalHours	string($time-span)
+UnitCost	MonetaryValueModel{...}
+nullable: true
+TotalCost	MonetaryValueModel{...}
+nullable: true
+Margin	MarginModel{...}
+nullable: true
+Price	MonetaryValueModel{...}
+nullable: true
+TypicalGroupName	string
+nullable: true
+}
+nullable: true
+ProposalDistributedCostModel{
+Name	string
+nullable: true
+Amount	MonetaryValueModel{...}
+nullable: true
+ApplyAs	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+Location	string
+nullable: true
+ProductId	string($uuid)
+ProductName	string
+nullable: true
+ProductDescription	string
+nullable: true
+ProductSKU	string
+nullable: true
+}
+nullable: true
+ProposalOverheadModel{
+OriginName	string
+nullable: true
+Name	string
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+TotalCost	MonetaryValueModel{...}
+nullable: true
+Quantity	number($double)
+Profit	MarginModel{...}
+nullable: true
+Sell	MonetaryValueModel{...}
+nullable: true
+CostType	string
+nullable: true
+Building	string
+nullable: true
+Floor	string
+nullable: true
+Zone	string
+nullable: true
+Location	string
+nullable: true
+ProductId	string($uuid)
+ProductName	string
+nullable: true
+ProductDescription	string
+nullable: true
+ProductSKU	string
+nullable: true
+BudgetGroup	string
+nullable: true
+}
+nullable: true
+TaxRateModel{
+Name	string
+nullable: true
+Description	string
+nullable: true
+Rate	number($double)
+}
+nullable: true
+FacilityRateModel{
+FacilityName	string
+nullable: true
+Rates	[...]
+}
+nullable: true
+QuestionModel{
+Question	string
+nullable: true
+Answer	boolean
+Rate	string
+nullable: true
+Questions	[...]
+}
+nullable: true
+QuestionnaireDataModel{
+Exempt	[...]
+Installed	[...]
+MaterialOnly	[...]
+ResaleOnly	[...]
+}
+nullable: true
+TaxModel{
+FacilityRates	[...]
+JobsiteRates	[...]
+UseTaxMargin	number($double)
+DefaultTaxType	string
+nullable: true
+Questionnaire	QuestionnaireDataModel{...}
+nullable: true
+}
+nullable: true
+ContactInformationModel{
+FullName	string
+nullable: true
+Email	string
+nullable: true
+CellPhone	string
+nullable: true
+HomePhone	string
+nullable: true
+PhysicalAddress	AddressModel{...}
+nullable: true
+CorrespondenceAddress	AddressModel{...}
+nullable: true
+}
+nullable: true
+ProposalModel{
+ProposalInformation	ProposalInformationModel{...}
+nullable: true
+CustomerInformation	CustomerInformationModel{...}
+nullable: true
+JobDetails	JobDetailsModel{...}
+nullable: true
+ScopeElements	[...]
+BudgetTotals	BudgetTotalsModel{...}
+nullable: true
+AlternateTotals	[...]
+ScopeOfWork	[...]
+BudgetData	[...]
+MaterialData	[...]
+OperationData	[...]
+DistributedCostData	[...]
+OverheadData	[...]
+ClarificationsAndDetails	string
+nullable: true
+ClarificationsAndDetailsPlainText	string
+nullable: true
+LegalConditions	string
+nullable: true
+LegalConditionsPlainText	string
+nullable: true
+Tax	TaxModel{...}
+nullable: true
+ProjectManagerContact	ContactInformationModel{...}
+nullable: true
+}
+nullable: true
+GlobalVariableModel{
+GlobalGroup	string
+nullable: true
+Instance	string
+nullable: true
+}
+nullable: true
+VariableModel{
+Name	string
+nullable: true
+Type	string
+nullable: true
+Value	string
+nullable: true
+DisplayValue	string
+nullable: true
+}
+nullable: true
+ProposalProductVariablesModel{
+Sku	string
+nullable: true
+Name	string
+nullable: true
+LibraryName	string
+nullable: true
+Description	string
+nullable: true
+Globals	[...]
+Locals	[...]
+}
+nullable: true
+ProposalGlobalGroupInstanceModel{
+Name	string
+nullable: true
+Variables	[...]
+}
+nullable: true
+ProposalGlobalGroupModel{
+Name	string
+nullable: true
+Instances	[...]
+}
+nullable: true
+BidIdentifierModel{
+Id	string($uuid)
+readOnly: true
+BidName	string
+nullable: true
+readOnly: true
+BidNumber	string
+nullable: true
+readOnly: true
+}
+nullable: true
+ContactIdentifierModel{
+Id	string($uuid)
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+}
+nullable: true
+ProposalListModel{
+Id	string($uuid)
+Number	string
+nullable: true
+Name	string
+nullable: true
+Bid	BidIdentifierModel{...}
+nullable: true
+Client	OfficeIdentifierModel{...}
+nullable: true
+Contact	ContactIdentifierModel{...}
+nullable: true
+TotalPrice	MonetaryValueModel{...}
+nullable: true
+CreateDate	string($date-time)
+CreateBy	PeopleIdentifierModel{...}
+nullable: true
+HasDetails	boolean
+}
+nullable: true
+ProposalListModelResultModel{
+Items	[...]
+}
+nullable: true
+PurchaseOrderStatusstring($string)
+Enum:
+Array [ 12 ]
+PurchaseOrderLineItemModel{
+LineItemNumber	integer($int32)
+MaterialName	string
+nullable: true
+MaterialDescription	string
+nullable: true
+MaterialNote	string
+nullable: true
+MaterialExternalId	string
+nullable: true
+UoM	string
+nullable: true
+Status	string
+nullable: true
+ExpenseUponReceipt	boolean
+VendorSKU	string
+nullable: true
+ManufacturerSKU	string
+nullable: true
+InnergySKU	string
+nullable: true
+PreferredProject	string
+nullable: true
+Customer	string
+nullable: true
+CustomerOffice	string
+nullable: true
+Taxed	boolean
+TaxTreatment	string
+nullable: true
+TaxRate	number($double)
+nullable: true
+TaxAmount	MonetaryValueModel{...}
+nullable: true
+ExpectedUnitCost	MonetaryValueModel{...}
+nullable: true
+ExpectedTotal	MonetaryValueModel{...}
+nullable: true
+ReceivedTotal	MonetaryValueModel{...}
+nullable: true
+QuantityOrdered	number($double)
+QuantityReceived	number($double)
+DebitGLAccount	string
+nullable: true
+FSCClaimType	string
+nullable: true
+FSCProductType	string
+nullable: true
+BinNames	[...]
+Notes	string
+nullable: true
+NotesPlainText	string
+nullable: true
+Expedite	boolean
+AddShipment	boolean
+AddHandling	boolean
+AddCarton	boolean
+AddOther	boolean
+Inspected	boolean
+DateNeeded	string($date)
+nullable: true
+DateExpected	string($date)
+nullable: true
+FirstDateReceived	string($date)
+nullable: true
+ClosedDate	string($date)
+nullable: true
+ReturnDate	string($date)
+nullable: true
+Tags	[...]
+WorkOrder	string
+nullable: true
+Project	string
+nullable: true
+}
+nullable: true
+PurchaseOrderReceiptModel{
+ReceiptId	string
+nullable: true
+LineItemNumber	integer($int32)
+CreatedDate	string($date-time)
+Item	string
+nullable: true
+PostDate	string($date)
+nullable: true
+DebitGLAccount	string
+nullable: true
+CreditGLAccount	string
+nullable: true
+VendorInvoiceNumber	string
+nullable: true
+InvoiceDate	string($date)
+nullable: true
+ReceivedQuantity	number($double)
+UoM	string
+nullable: true
+UnitCost	MonetaryValueModel{...}
+nullable: true
+ExpediteCharges	MonetaryValueModel{...}
+nullable: true
+ShippingCharges	MonetaryValueModel{...}
+nullable: true
+HandlingCharges	MonetaryValueModel{...}
+nullable: true
+CartonCharges	MonetaryValueModel{...}
+nullable: true
+OtherCharges	MonetaryValueModel{...}
+nullable: true
+TaxRate	number($double)
+nullable: true
+TaxAmount	MonetaryValueModel{...}
+nullable: true
+TotalCost	MonetaryValueModel{...}
+nullable: true
+ProjectNumber	string
+nullable: true
+ProjectName	string
+nullable: true
+WorkOrderNumber	string
+nullable: true
+WorkOrderName	string
+nullable: true
+}
+nullable: true
+PurchaseOrderModel{
+Number	string
+nullable: true
+Status	string
+nullable: true
+Vendor	string
+nullable: true
+VendorContactName	string
+nullable: true
+VendorOffice	string
+nullable: true
+Address	AddressModel{...}
+nullable: true
+ContactPhone	string
+nullable: true
+ContactEmail	string
+nullable: true
+VendorAcknowledgment	string
+nullable: true
+FSCCoC	string
+nullable: true
+PaymentTerms	string
+nullable: true
+ShipVia	string
+nullable: true
+FOB	string
+nullable: true
+CustomerTaxExempt	string
+nullable: true
+Facility	string
+nullable: true
+ShipTo	string
+nullable: true
+BillTo	string
+nullable: true
+CreatedBy	UserIdentifierModel{...}
+nullable: true
+CreatedDate	string($date-time)
+OrderedBy	string
+nullable: true
+OrderedDate	string($date-time)
+nullable: true
+FirstDateRequired	string($date)
+nullable: true
+PreferredProjects	[...]
+ExternalIdentifier	string
+nullable: true
+VendorExternalIdentifier	string
+nullable: true
+VendorNotes	string
+nullable: true
+VendorNotesRichText	string
+nullable: true
+VendorNotesPlainText	string
+nullable: true
+ReceivingNotes	string
+nullable: true
+ReceivingNotesRichText	string
+nullable: true
+ReceivingNotesPlainText	string
+nullable: true
+ExpediteCharges	MonetaryValueModel{...}
+nullable: true
+ExpediteChargesGLNumber	string
+nullable: true
+ShippingCharges	MonetaryValueModel{...}
+nullable: true
+ShippingChargesGLNumber	string
+nullable: true
+HandlingCharges	MonetaryValueModel{...}
+nullable: true
+HandlingChargesGLNumber	string
+nullable: true
+CartonCharges	MonetaryValueModel{...}
+nullable: true
+CartonChargesGLNumber	string
+nullable: true
+OtherCharges	MonetaryValueModel{...}
+nullable: true
+OtherChargesGLNumber	string
+nullable: true
+ExpectedTotalCost	MonetaryValueModel{...}
+nullable: true
+ReceivedTotalCost	MonetaryValueModel{...}
+nullable: true
+LineItems	[...]
+Receipts	[...]
+WorkOrders	[...]
+Projects	[...]
+CustomFields	[...]
+}
+nullable: true
+PurchaseOrdersResultModel{
+CreateDate	string($date-time)
+Items	[...]
+}
+nullable: true
+ReceivedMaterialLabelModel{
+MaterialName*	string
+MaterialSku*	string
+Date*	string($date-time)
+Quantity*	number($double)
+UomName*	string
+InventoryBinName	string
+nullable: true
+FacilityName	string
+nullable: true
+ManufacturerSku	string
+nullable: true
+PrefferedProjectName	string
+nullable: true
+PrefferedProjectOrWorkOrderNumber	string
+nullable: true
+PurchaseOrderNumber	string
+nullable: true
+QrCode*	string
+ProjectName	string
+nullable: true
+ProjectOrWorkOrderNumber	string
+nullable: true
+}
+nullable: true
+ReceivedMaterialLabelModelResultModel{
+Items	[...]
+}
+nullable: true
+RfiReasonRequestTypeinteger($int32)
+Enum:
+Array [ 8 ]
+RfiTypeinteger($int32)
+Enum:
+Array [ 4 ]
+RfiCostImpactTypeinteger($int32)
+Enum:
+Array [ 4 ]
+RfiScheduleImpactTypeinteger($int32)
+Enum:
+Array [ 4 ]
+RfiStatusTypeinteger($int32)
+Enum:
+Array [ 4 ]
+RfiContactDetailsModel{
+Id	string($uuid)
+readOnly: true
+FirstName	string
+nullable: true
+readOnly: true
+LastName	string
+nullable: true
+readOnly: true
+Email	string
+nullable: true
+readOnly: true
+IsActive	boolean
+readOnly: true
+}
+nullable: true
+RfiOfficeDetailsModel{
+Id	string($uuid)
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+OfficeMail	string
+nullable: true
+readOnly: true
+PhysicalAddress	AddressModel{...}
+nullable: true
+CorrespondenceAddress	AddressModel{...}
+nullable: true
+IsActive	boolean
+readOnly: true
+Contacts	[...]
+}
+nullable: true
+RfiCompanyDetailsModel{
+Id	string($uuid)
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+Offices	[...]
+}
+nullable: true
+RfiLocationDetailsModel{
+Id	string($uuid)
+readOnly: true
+Number	string
+nullable: true
+readOnly: true
+Name	string
+nullable: true
+readOnly: true
+IsActive	boolean
+readOnly: true
+}
+nullable: true
+RfiSheetDetailsModel{
+Id	string($uuid)
+readOnly: true
+PlanNumber	string
+nullable: true
+readOnly: true
+Version	string
+nullable: true
+readOnly: true
+VersionDate	string($date-time)
+nullable: true
+readOnly: true
+IsActive	boolean
+readOnly: true
+Locations	[...]
+}
+nullable: true
+RfiShopDrawingSheetDetailsModel{
+Id	string($uuid)
+readOnly: true
+PlanNumber	string
+nullable: true
+readOnly: true
+Version	string
+nullable: true
+readOnly: true
+VersionDate	string($date-time)
+nullable: true
+readOnly: true
+IsActive	boolean
+readOnly: true
+}
+nullable: true
+RfiRelatedDetailsModel{
+Id	string($uuid)
+readOnly: true
+Number	integer($int32)
+readOnly: true
+Subject	string
+nullable: true
+readOnly: true
+ReasonType	RfiReasonRequestTypeinteger($int32)
+Enum:
+Array [ 8 ]
+}
+nullable: true
+RfiAnswerDetailsModel{
+Answer	string
+nullable: true
+readOnly: true
+CreatedDate	string($date-time)
+readOnly: true
+IsKeyAnswer	boolean
+readOnly: true
+FirstName	string
+nullable: true
+readOnly: true
+LastName	string
+nullable: true
+readOnly: true
+Email	string
+nullable: true
+readOnly: true
+}
+nullable: true
+RfiDetailsModel{
+Id	string($uuid)
+readOnly: true
+RfiNumber	integer($int32)
+readOnly: true
+Subject	string
+nullable: true
+readOnly: true
+ReasonForRequest	RfiReasonRequestTypeinteger($int32)
+Enum:
+Array [ 8 ]
+RfiType	RfiTypeinteger($int32)
+Enum:
+Array [ 4 ]
+ReasonDetails	string
+nullable: true
+readOnly: true
+CostImpact	RfiCostImpactTypeinteger($int32)
+Enum:
+Array [ 4 ]
+ScheduleImpact	RfiScheduleImpactTypeinteger($int32)
+Enum:
+Array [ 4 ]
+Status	RfiStatusTypeinteger($int32)
+Enum:
+Array [ 4 ]
+DueDate	string($date-time)
+readOnly: true
+SubmittalDate	string($date-time)
+nullable: true
+readOnly: true
+Age	string($time-span)
+nullable: true
+readOnly: true
+ClosedDate	string($date-time)
+nullable: true
+readOnly: true
+Description	string
+nullable: true
+readOnly: true
+Proposed	string
+nullable: true
+readOnly: true
+OpportunityId	string($uuid)
+readOnly: true
+OpportunityName	string
+nullable: true
+readOnly: true
+OpportunitySequenceIdentifier	string
+nullable: true
+readOnly: true
+BidId	string($uuid)
+readOnly: true
+BidName	string
+nullable: true
+readOnly: true
+BidSequenceIdentifier	string
+nullable: true
+readOnly: true
+ProjectId	string($uuid)
+readOnly: true
+ProjectName	string
+nullable: true
+readOnly: true
+ProjectSequenceIdentifier	string
+nullable: true
+readOnly: true
+WorkOrderId	string($uuid)
+readOnly: true
+WorkOrderName	string
+nullable: true
+readOnly: true
+WorkOrderSequenceIdentifier	string
+nullable: true
+readOnly: true
+CreatedDate	string($date-time)
+readOnly: true
+CreatedByFirstName	string
+nullable: true
+readOnly: true
+CreatedByLastName	string
+nullable: true
+readOnly: true
+ModifiedByFirstName	string
+nullable: true
+readOnly: true
+ModifiedByLastName	string
+nullable: true
+readOnly: true
+ModifiedDate	string($date-time)
+nullable: true
+readOnly: true
+CustomerRfiNumber	string
+nullable: true
+readOnly: true
+ProjectManager	string
+nullable: true
+readOnly: true
+Companies	[...]
+Sheets	[...]
+ShopDrawingSheets	[...]
+Locations	[...]
+Related	[...]
+Answers	[...]
+}
+nullable: true
+RfiDetailsModelResultModel{
+Items	[...]
+}
+nullable: true
+SheetsApiModel{
+SheetId	string($uuid)
+Number	string
+nullable: true
+Name	string
+nullable: true
+Version	string
+nullable: true
+IssueDate	string($date)
+SheetHasCostObjects	boolean
+SheetHasAnnotation	boolean
+SheetHasTasks	boolean
+SheetHasLocations	boolean
+UploadedDate	string($date)
+UploadedBy	string
+nullable: true
+UploadedById	string($uuid)
+Tags	[...]
+PublishedTo	string
+nullable: true
+OpportunityId	string($uuid)
+nullable: true
+OpportunityNumber	string
+nullable: true
+OpportunityName	string
+nullable: true
+ProjectId	string($uuid)
+nullable: true
+ProjectNumber	string
+nullable: true
+ProjectName	string
+nullable: true
+}
+nullable: true
+SheetTypestring($string)
+Enum:
+Array [ 2 ]
+ScaleModel{
+ScaleDistanceInRealityFormat	string
+nullable: true
+ScaleDistanceInRealityInches	number($double)
+ScaleDistanceOnSheet	number($double)
+}
+nullable: true
+TakeoffSheetModel{
+description:	
+Sheet API Model - basic sheet data used for external app import (i.e. design)
+
+Id	string($uuid)
+Name	string
+nullable: true
+SheetVersion	string
+nullable: true
+SheetType	SheetTypestring($string)
+Enum:
+Array [ 2 ]
+SheetNumber	string
+nullable: true
+IsSnapPointsExtractionCompleted	boolean
+Scale	ScaleModel{...}
+nullable: true
+}
+nullable: true
+SizeModel{
+Width	integer($int32)
+Height	integer($int32)
+}
+nullable: true
+FileTypestring($string)
+Enum:
+Array [ 4 ]
+TakeoffSheetDetailsModel{
+description:	
+Sheet API Model - basic sheet data used for external app import (i.e. design)
+
+DisplayName	string
+nullable: true
+VersionSetName	string
+nullable: true
+SheetId	string($uuid)
+SheetNumber	string
+nullable: true
+SheetSourceFileId	string($uuid)
+Size	SizeModel{...}
+nullable: true
+ImageLowQualitySrc	string
+nullable: true
+ImageHighQualitySrc	string
+nullable: true
+IsCalibrationReliable	boolean
+Grayscale	boolean
+IsTheLatestVersion	boolean
+Scale	ScaleModel{...}
+nullable: true
+SnapPointsFileIdentifier	string
+nullable: true
+SourceFileIdentifier	string
+nullable: true
+PageNumber	integer($int32)
+FileType	FileTypestring($string)
+Enum:
+Array [ 4 ]
+}
+nullable: true
+TaxRegulationsTypeModelinteger($int32)
+nullable: true
+Enum:
+Array [ 6 ]
+ProductOnSheetImportMaterialModel{
+Id*	string($uuid)
+Quantity*	number($double)
+}
+nullable: true
+ProductOnSheetImportOperationModel{
+Id*	string($uuid)
+Quantity*	number($double)
+}
+nullable: true
+CashItemTypeinteger($int32)
+Enum:
+Array [ 3 ]
+ProductOnSheetImportCashItemModel{
+Name*	string
+ProfitPercentage*	number($double)
+Cost*	MonetaryValueModel{...}
+nullable: true
+Type*	CashItemTypeinteger($int32)
+Enum:
+Array [ 3 ]
+}
+nullable: true
+ProductProcessingTypeinteger($int32)
+Enum:
+Array [ 2 ]
+DimensionsModel{
+Count	integer($int32)
+X	number($double)
+nullable: true
+Y	number($double)
+nullable: true
+Z	number($double)
+nullable: true
+}
+nullable: true
+ProductOnSheetImportLocationModel{
+Name*	string
+Number*	string
+}
+nullable: true
+ProductOnSheetImportModel{
+Name*	string
+Description	string
+nullable: true
+TaxRegulationsType*	TaxRegulationsTypeModelinteger($int32)
+nullable: true
+Enum:
+Array [ 6 ]
+Materials*	[...]
+Operations*	[...]
+CashItems*	[...]
+ProductType*	ProductProcessingTypeinteger($int32)
+Enum:
+Array [ 2 ]
+DesiredUnitDraftingPreSellTaxPrice	MonetaryValueModel{...}
+nullable: true
+DesiredUnitFabricationPreSellTaxPrice	MonetaryValueModel{...}
+nullable: true
+DesiredUnitInstallPreSellTaxPrice	MonetaryValueModel{...}
+nullable: true
+Dimensions	DimensionsModel{...}
+nullable: true
+Location	ProductOnSheetImportLocationModel{...}
+nullable: true
+}
+nullable: true
+ProductsOnSheetImportModel{
+SheetId*	string($uuid)
+BidOriginId	string($uuid)
+nullable: true
+BidOriginName	string
+nullable: true
+Products*	[...]
+}
+nullable: true
+TenantSocialModel{
+Facebook	string
+nullable: true
+Twitter	string
+nullable: true
+LinkedIn	string
+nullable: true
+Instagram	string
+nullable: true
+YouTube	string
+nullable: true
+}
+nullable: true
+WarehouseModel{
+Name	string
+nullable: true
+ShortName	string
+nullable: true
+Description	string
+nullable: true
+Address	AddressModel{...}
+nullable: true
+}
+nullable: true
+LabelPrinterModel{
+Name	string
+nullable: true
+IpAddress	string
+nullable: true
+}
+nullable: true
+FacilityDetailsModel{
+Name	string
+nullable: true
+Email	string
+nullable: true
+Phone	string
+nullable: true
+TimeZone	string
+nullable: true
+Address	AddressModel{...}
+nullable: true
+Warehouses	[...]
+Printers	[...]
+}
+nullable: true
+TenantModel{
+CompanyName	string
+nullable: true
+Website	string
+nullable: true
+Email	string
+nullable: true
+Phone	string
+nullable: true
+Fax	string
+nullable: true
+TollFree	string
+nullable: true
+Address	AddressModel{...}
+nullable: true
+Social	TenantSocialModel{...}
+nullable: true
+Facilities	[...]
+}
+nullable: true
+TimeTrackingModel{
+ActivityName	string
+nullable: true
+WorkOrderNumber	string
+nullable: true
+ActivityStartDate	string($date-time)
+nullable: true
+ActivityEndDate	string($date-time)
+nullable: true
+EmployeeData	PeopleIdentifierModel{...}
+nullable: true
+EmployeeExternalId	string
+nullable: true
+EmployeeTimeZone	string
+nullable: true
+ActivityDate	string
+nullable: true
+ActivityDuration	string($time-span)
+nullable: true
+IsPaid	boolean
+nullable: true
+IsTimeRounded	boolean
+ActivityStatus	string
+nullable: true
+ApprovedBy	string
+nullable: true
+ApprovedDate	string($date-time)
+nullable: true
+IsPayrollLocked	boolean
+EmployeeDepartment	string
+nullable: true
+TeamName	string
+nullable: true
+ProjectName	string
+nullable: true
+ProjectExternalId	string
+nullable: true
+OpportunityName	string
+nullable: true
+BidName	string
+nullable: true
+WorkOrderName	string
+nullable: true
+LaborItemName	string
+nullable: true
+LaborItemExternalId	string
+nullable: true
+EmploymentStatus	string
+nullable: true
+ActivityIdentifier	string
+nullable: true
+DirectLaborCostRate	MonetaryValueModel{...}
+nullable: true
+BurdenedLaborCostRate	MonetaryValueModel{...}
+nullable: true
+Note	string
+nullable: true
+ProjectCustomerOffice	OfficeIdentifierModel{...}
+nullable: true
+ProjectCustomer	CompanyIdentifierModel{...}
+nullable: true
+StartIp	string
+nullable: true
+EndIp	string
+nullable: true
+ModifiedBy	string
+nullable: true
+ModifiedDate	string($date-time)
+nullable: true
+EnteredBy	string
+nullable: true
+}
+nullable: true
+ActivityLogCreateApiModel{
+EmployeeLogin	string
+nullable: true
+StartDate	string($date-time)
+nullable: true
+EndDate	string($date-time)
+nullable: true
+DurationDate	string($date)
+nullable: true
+DurationInSeconds	number($double)
+nullable: true
+BidNumber	string
+nullable: true
+WorkOrderNumber	string
+nullable: true
+LaborItemId	string($uuid)
+Note	string
+nullable: true
+}
+nullable: true
+VersionModel{
+ServerVersion	string
+nullable: true
+}
+nullable: true
+WorkInProgressModel{
+ProjectId	string($uuid)
+ProjectNumber	string
+nullable: true
+ProjectName	string
+nullable: true
+ProjectStatus	string
+nullable: true
+readOnly: true
+OpportunityId	string($uuid)
+OpportunityNumber	string
+nullable: true
+ProjectManager	string
+nullable: true
+CuttOffDate	string($date)
+nullable: true
+PreSalesTaxContractRevenue	MonetaryValueModel{...}
+nullable: true
+EstimatedGrandTotalCost	MonetaryValueModel{...}
+nullable: true
+ActualGrandTotalCost	MonetaryValueModel{...}
+nullable: true
+ActualGrandTotalCostToDate	MonetaryValueModel{...}
+nullable: true
+ProjectCompletePercent	number($double)
+nullable: true
+EstimatedEarnedRevenue	MonetaryValueModel{...}
+nullable: true
+EstimatedMarginPercent	number($double)
+nullable: true
+ProjectBilled	MonetaryValueModel{...}
+nullable: true
+ProjectedTotalCost	MonetaryValueModel{...}
+nullable: true
+ProjectedMargin	number($double)
+nullable: true
+ProjectedPercentComplete	number($double)
+nullable: true
+EstimatedMargin	MonetaryValueModel{...}
+nullable: true
+TotalContractValue	MonetaryValueModel{...}
+nullable: true
+}
+nullable: true
+WorkInProgressModelResultModel{
+Items	[...]
+}
+nullable: true
